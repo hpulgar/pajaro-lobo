@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMensajesTableroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMensajesTableroLabel_idMensajes}" for="idMensajes" />
+                    <h:inputText id="idMensajes" value="#{mensajesTableroController.selected.idMensajes}" title="#{bundle.EditMensajesTableroTitle_idMensajes}" required="true" requiredMessage="#{bundle.EditMensajesTableroRequiredMessage_idMensajes}"/>
+                    <h:outputLabel value="#{bundle.EditMensajesTableroLabel_mensaje}" for="mensaje" />
+                    <h:inputText id="mensaje" value="#{mensajesTableroController.selected.mensaje}" title="#{bundle.EditMensajesTableroTitle_mensaje}" required="true" requiredMessage="#{bundle.EditMensajesTableroRequiredMessage_mensaje}"/>
+                    <h:outputLabel value="#{bundle.EditMensajesTableroLabel_fechaComentario}" for="fechaComentario" />
+                    <h:inputText id="fechaComentario" value="#{mensajesTableroController.selected.fechaComentario}" title="#{bundle.EditMensajesTableroTitle_fechaComentario}" required="true" requiredMessage="#{bundle.EditMensajesTableroRequiredMessage_fechaComentario}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditMensajesTableroLabel_idTablero}" for="idTablero" />
+                    <h:selectOneMenu id="idTablero" value="#{mensajesTableroController.selected.idTablero}" title="#{bundle.EditMensajesTableroTitle_idTablero}" required="true" requiredMessage="#{bundle.EditMensajesTableroRequiredMessage_idTablero}">
+                        <f:selectItems value="#{tableroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditMensajesTableroLabel_idUsuario}" for="idUsuario" />
+                    <h:selectOneMenu id="idUsuario" value="#{mensajesTableroController.selected.idUsuario}" title="#{bundle.EditMensajesTableroTitle_idUsuario}" required="true" requiredMessage="#{bundle.EditMensajesTableroRequiredMessage_idUsuario}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{mensajesTableroController.update}" value="#{bundle.EditMensajesTableroSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditMensajesTableroViewLink}"/>
+                <br />
+                <h:commandLink action="#{mensajesTableroController.prepareList}" value="#{bundle.EditMensajesTableroShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditMensajesTableroIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreatePosteosComentarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreatePosteosComentarioLabel_idComentario}" for="idComentario" />
+                    <h:inputText id="idComentario" value="#{posteosComentarioController.selected.idComentario}" title="#{bundle.CreatePosteosComentarioTitle_idComentario}" required="true" requiredMessage="#{bundle.CreatePosteosComentarioRequiredMessage_idComentario}"/>
+                    <h:outputLabel value="#{bundle.CreatePosteosComentarioLabel_comentario}" for="comentario" />
+                    <h:inputTextarea rows="4" cols="30" id="comentario" value="#{posteosComentarioController.selected.comentario}" title="#{bundle.CreatePosteosComentarioTitle_comentario}" required="true" requiredMessage="#{bundle.CreatePosteosComentarioRequiredMessage_comentario}"/>
+                    <h:outputLabel value="#{bundle.CreatePosteosComentarioLabel_fecha}" for="fecha" />
+                    <h:inputText id="fecha" value="#{posteosComentarioController.selected.fecha}" title="#{bundle.CreatePosteosComentarioTitle_fecha}" required="true" requiredMessage="#{bundle.CreatePosteosComentarioRequiredMessage_fecha}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreatePosteosComentarioLabel_idPost}" for="idPost" />
+                    <h:selectOneMenu id="idPost" value="#{posteosComentarioController.selected.idPost}" title="#{bundle.CreatePosteosComentarioTitle_idPost}" required="true" requiredMessage="#{bundle.CreatePosteosComentarioRequiredMessage_idPost}">
+                        <f:selectItems value="#{foroPosteosController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreatePosteosComentarioLabel_posteador}" for="posteador" />
+                    <h:selectOneMenu id="posteador" value="#{posteosComentarioController.selected.posteador}" title="#{bundle.CreatePosteosComentarioTitle_posteador}" required="true" requiredMessage="#{bundle.CreatePosteosComentarioRequiredMessage_posteador}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{posteosComentarioController.create}" value="#{bundle.CreatePosteosComentarioSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{posteosComentarioController.prepareList}" value="#{bundle.CreatePosteosComentarioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreatePosteosComentarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListPosteosComentarioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListPosteosComentarioEmpty}" rendered="#{posteosComentarioController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{posteosComentarioController.items.rowCount > 0}">
+                    <h:outputText value="#{posteosComentarioController.pagination.pageFirstItem + 1}..#{posteosComentarioController.pagination.pageLastItem + 1}/#{posteosComentarioController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{posteosComentarioController.previous}" value="#{bundle.Previous} #{posteosComentarioController.pagination.pageSize}" rendered="#{posteosComentarioController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{posteosComentarioController.next}" value="#{bundle.Next} #{posteosComentarioController.pagination.pageSize}" rendered="#{posteosComentarioController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{posteosComentarioController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPosteosComentarioTitle_idComentario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idComentario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPosteosComentarioTitle_comentario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.comentario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPosteosComentarioTitle_fecha}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fecha}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPosteosComentarioTitle_idPost}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idPost}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListPosteosComentarioTitle_posteador}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.posteador}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{posteosComentarioController.prepareView}" value="#{bundle.ListPosteosComentarioViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{posteosComentarioController.prepareEdit}" value="#{bundle.ListPosteosComentarioEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{posteosComentarioController.destroy}" value="#{bundle.ListPosteosComentarioDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{posteosComentarioController.prepareCreate}" value="#{bundle.ListPosteosComentarioCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListPosteosComentarioIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

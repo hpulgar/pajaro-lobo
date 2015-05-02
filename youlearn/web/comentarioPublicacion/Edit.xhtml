@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditComentarioPublicacionTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditComentarioPublicacionLabel_idComentario}" for="idComentario" />
+                    <h:inputText id="idComentario" value="#{comentarioPublicacionController.selected.idComentario}" title="#{bundle.EditComentarioPublicacionTitle_idComentario}" required="true" requiredMessage="#{bundle.EditComentarioPublicacionRequiredMessage_idComentario}"/>
+                    <h:outputLabel value="#{bundle.EditComentarioPublicacionLabel_comentario}" for="comentario" />
+                    <h:inputText id="comentario" value="#{comentarioPublicacionController.selected.comentario}" title="#{bundle.EditComentarioPublicacionTitle_comentario}" required="true" requiredMessage="#{bundle.EditComentarioPublicacionRequiredMessage_comentario}"/>
+                    <h:outputLabel value="#{bundle.EditComentarioPublicacionLabel_idPublicacion}" for="idPublicacion" />
+                    <h:selectOneMenu id="idPublicacion" value="#{comentarioPublicacionController.selected.idPublicacion}" title="#{bundle.EditComentarioPublicacionTitle_idPublicacion}" required="true" requiredMessage="#{bundle.EditComentarioPublicacionRequiredMessage_idPublicacion}">
+                        <f:selectItems value="#{publicacionPerfilController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.EditComentarioPublicacionLabel_idComentador}" for="idComentador" />
+                    <h:selectOneMenu id="idComentador" value="#{comentarioPublicacionController.selected.idComentador}" title="#{bundle.EditComentarioPublicacionTitle_idComentador}" required="true" requiredMessage="#{bundle.EditComentarioPublicacionRequiredMessage_idComentador}">
+                        <f:selectItems value="#{usuarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{comentarioPublicacionController.update}" value="#{bundle.EditComentarioPublicacionSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditComentarioPublicacionViewLink}"/>
+                <br />
+                <h:commandLink action="#{comentarioPublicacionController.prepareList}" value="#{bundle.EditComentarioPublicacionShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditComentarioPublicacionIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

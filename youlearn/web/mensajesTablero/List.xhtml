@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMensajesTableroTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListMensajesTableroEmpty}" rendered="#{mensajesTableroController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{mensajesTableroController.items.rowCount > 0}">
+                    <h:outputText value="#{mensajesTableroController.pagination.pageFirstItem + 1}..#{mensajesTableroController.pagination.pageLastItem + 1}/#{mensajesTableroController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{mensajesTableroController.previous}" value="#{bundle.Previous} #{mensajesTableroController.pagination.pageSize}" rendered="#{mensajesTableroController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{mensajesTableroController.next}" value="#{bundle.Next} #{mensajesTableroController.pagination.pageSize}" rendered="#{mensajesTableroController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{mensajesTableroController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMensajesTableroTitle_idMensajes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idMensajes}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMensajesTableroTitle_mensaje}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.mensaje}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMensajesTableroTitle_fechaComentario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechaComentario}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMensajesTableroTitle_idTablero}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idTablero}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMensajesTableroTitle_idUsuario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idUsuario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{mensajesTableroController.prepareView}" value="#{bundle.ListMensajesTableroViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mensajesTableroController.prepareEdit}" value="#{bundle.ListMensajesTableroEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{mensajesTableroController.destroy}" value="#{bundle.ListMensajesTableroDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{mensajesTableroController.prepareCreate}" value="#{bundle.ListMensajesTableroCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListMensajesTableroIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
