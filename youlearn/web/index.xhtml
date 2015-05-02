@@ -3,110 +3,625 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
-    </h:head>
-    <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="/amigos/List" value="Show All Amigos Items"/>
-        <br />
-        <h:link outcome="/archivo/List" value="Show All Archivo Items"/>
-        <br />
-        <h:link outcome="/ciudad/List" value="Show All Ciudad Items"/>
-        <br />
-        <h:link outcome="/comentarioPublicacion/List" value="Show All ComentarioPublicacion Items"/>
-        <br />
-        <h:link outcome="/curso/List" value="Show All Curso Items"/>
-        <br />
-        <h:link outcome="/cursoCategoria/List" value="Show All CursoCategoria Items"/>
-        <br />
-        <h:link outcome="/cursoSubCat/List" value="Show All CursoSubCat Items"/>
-        <br />
-        <h:link outcome="/foroCategoria/List" value="Show All ForoCategoria Items"/>
-        <br />
-        <h:link outcome="/foroPosteos/List" value="Show All ForoPosteos Items"/>
-        <br />
-        <h:link outcome="/foroSubcategoria/List" value="Show All ForoSubcategoria Items"/>
-        <br />
-        <h:link outcome="/inscripcionCurso/List" value="Show All InscripcionCurso Items"/>
-        <br />
-        <h:link outcome="/logSubidas/List" value="Show All LogSubidas Items"/>
-        <br />
-        <h:link outcome="/mensaje/List" value="Show All Mensaje Items"/>
-        <br />
-        <h:link outcome="/mensajePara/List" value="Show All MensajePara Items"/>
-        <br />
-        <h:link outcome="/mensajesTablero/List" value="Show All MensajesTablero Items"/>
-        <br />
-        <h:link outcome="/menu/List" value="Show All Menu Items"/>
-        <br />
-        <h:link outcome="/pais/List" value="Show All Pais Items"/>
-        <br />
-        <h:link outcome="/perfil/List" value="Show All Perfil Items"/>
-        <br />
-        <h:link outcome="/permisos/List" value="Show All Permisos Items"/>
-        <br />
-        <h:link outcome="/persona/List" value="Show All Persona Items"/>
-        <br />
-        <h:link outcome="/posteosComentario/List" value="Show All PosteosComentario Items"/>
-        <br />
-        <h:link outcome="/pregunta/List" value="Show All Pregunta Items"/>
-        <br />
-        <h:link outcome="/preguntasData/List" value="Show All PreguntasData Items"/>
-        <br />
-        <h:link outcome="/publicacionPerfil/List" value="Show All PublicacionPerfil Items"/>
-        <br />
-        <h:link outcome="/quiz/List" value="Show All Quiz Items"/>
-        <br />
-        <h:link outcome="/quizImagen/List" value="Show All QuizImagen Items"/>
-        <br />
-        <h:link outcome="/quizUsuario/List" value="Show All QuizUsuario Items"/>
-        <br />
-        <h:link outcome="/respuestas/List" value="Show All Respuestas Items"/>
-        <br />
-        <h:link outcome="/sesion/List" value="Show All Sesion Items"/>
-        <br />
-        <h:link outcome="/tablero/List" value="Show All Tablero Items"/>
-        <br />
-        <h:link outcome="/tipoAlumno/List" value="Show All TipoAlumno Items"/>
-        <br />
-        <h:link outcome="/tipoArchivo/List" value="Show All TipoArchivo Items"/>
-        <br />
-        <h:link outcome="/usuario/List" value="Show All Usuario Items"/>
+
+
+	<!--Meta Tags-->
+        <meta name="viewport" content="width=device-width; initial-scale=1.0"></meta>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		
+	<!--Title-->
+	<title>Park College - A Premium HTML Template for Learning Organizations</title>
+
+
+	<link rel="stylesheet" href="css/style.css" type="text/css"  media="all" />
+	<link rel="stylesheet" href="css/colour.css" type="text/css"  media="all" />
+	<link rel="stylesheet" href="css/flexslider.css" type="text/css"  media="all" />
+	<link rel="stylesheet" href="css/superfish.css" type="text/css"  media="all" />
+	<link rel="stylesheet" href="css/responsive.css" type="text/css"  media="all" />
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic,800,800italic' rel='stylesheet' type='text/css'></link>
+        <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,700,900' rel='stylesheet' type='text/css'></link>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+	<script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js'></script>
+	<script type="text/javascript" src="js/superfish.js"></script>
+	<script type="text/javascript" src="js/jquery.flexslider-min.js"></script>
+	<script type="text/javascript" src="js/tinynav.min.js"></script>
+	<script type="text/javascript" src="js/jquery.uniform.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	
+<!-- END head -->
+   </h:head>
+    
+    <h:body id="top" class="loading">
+  
+        
+
+<!-- BEGIN body -->
+
+
+	<!-- BEGIN #header-wrapper -->
+	<div id="header-wrapper">
+		
+		<!-- BEGIN #header-border -->
+		<div id="header-border">
+		
+			<!-- BEGIN #header-top -->
+			<div id="header-top" class="clearfix">
+			
+			  <ul class="top-left-nav clearfix">
+					<li><a href="blog.html">Blog</a><span>/</span></li>
+					<li><a href="events.html">Events</a><span>/</span></li>
+					<li><a href="typography.html">Jobs</a><span>/</span></li>
+					<li><a href="courses.html">Courses</a><span>/</span></li>
+					<li><a href="typography.html">Campus</a><span>/</span></li>
+				</ul>
+			
+				<ul class="top-right-nav clearfix">
+					<li class="phone-icon"></li>
+					<li class="email-icon"></li>
+				</ul>
+			
+			<!-- END #header-top -->
+			</div>
+			
+			<!-- BEGIN #header-content-wrapper -->
+			<div id="header-content-wrapper" class="clearfix">
+			
+				<div id="logo">
+					<h1><a href="index-2.html"><span>You</span>Learn</a></h1>
+				</div>
+			
+				<ul class="social-icons clearfix">	
+					<li><a target="_blank" href="#"><span class="twitter-icon"></span></a></li>
+					<li><a target="_blank" href="#"><span class="facebook-icon"></span></a></li>
+					<li><a target="_blank" href="#"><span class="gplus-icon"></span></a></li>
+					<li><a target="_blank" href="#"><span class="pinterest-icon"></span></a></li>
+					<li><a target="_blank" href="#"><span class="flickr-icon"></span></a></li>
+					<li><a target="_blank" href="#"><span class="youtube-icon"></span></a></li>
+					<li><a target="_blank" href="#"><span class="vimeo-icon"></span></a></li>
+					<li><a target="_blank" href="#"><span class="skype-icon"></span></a></li>
+					<li><a target="_blank" href="#"><span class="rss-icon"></span></a></li>
+				</ul>
+			
+			<!-- END #header-content-wrapper -->
+			</div>
+		
+			<!-- BEGIN #main-menu-wrapper -->
+			<div id="main-menu-wrapper" class="clearfix">
+		
+				<!-- BEGIN #main-menu -->
+				<ul id="main-menu">
+					
+					<li class="current_page_item"><a href="index-2.html">Home</a></li>
+					<li><a href="typography.html">Nosotros</a></li>
+					<li><a href="courses.html">Cursos</a>
+						<ul>
+							<li><a href="courses-single.html">Course Name #1</a></li>
+							<li><a href="courses-single.html">Course Name #2</a></li>
+							<li><a href="courses-single.html">Course Name #3</a>
+								<ul>
+									<li><a href="courses-single.html">Course Name #1</a></li>
+									<li><a href="courses-single.html">Course Name #2</a></li>
+									<li><a href="courses-single.html">Course Name #3</a></li>
+								</ul>
+							</li>
+							<li><a href="courses-single.html">Course Name #4</a></li>
+							<li><a href="courses-single.html">Course Name #5</a></li>
+							<li><a href="courses-single.html">Course Name #6</a></li>
+						</ul>
+					</li>
+					<li><a href="blog.html">Blog</a></li>
+					<li><a href="typography.html">Caracteristicas</a>
+						<ul>
+							<li><a href="events.html">Events</a></li>
+							<li><a href="events-single.html">Events Single</a></li>
+							<li><a href="teachers1.html">Teachers #1</a></li>
+							<li><a href="teachers2.html">Teachers #2</a></li>
+							<li><a href="portfolio.html">Portfolio</a></li>
+							<li><a href="portfolio-single.html">Portfolio Single</a></li>
+							<li><a href="photo-gallery-2-col.html">Gallery - 2 Columns</a></li>
+							<li><a href="photo-gallery-3-col.html">Gallery - 3 Columns</a></li>
+							<li><a href="photo-gallery-4-col.html">Gallery - 4 Columns</a></li>
+							<li><a href="full-width.html">Full Width</a></li>
+							<li><a href="left-sidebar.html">Left Sidebar</a></li>
+							<li><a href="right-sidebar.html">Right Sidebar</a></li>
+							<li><a href="columns.html">Columns</a></li>
+							<li><a href="js-elements.html">JS Elements</a></li>
+							<li><a href="typography.html">Typography</a></li>
+						</ul>
+					</li>
+					<li><a href="contact.html">Contactenos</a></li>
+					
+				<!-- END #main-menu -->
+				</ul>
+		
+				<div class="menu-search-button"></div>
+				<form method="get" action="#" class="menu-search-form">
+					<input class="menu-search-field" type="text" onBlur="if(this.value=='')this.value='To search, type and hit enter';" onFocus="if(this.value=='To search, type and hit enter')this.value='';" value="Ingrese una busqueda" name="s" />
+				</form>
+		
+			<!-- END #main-menu-wrapper -->
+			</div>
+		
+		<!-- END #header-border -->
+		</div>
+	
+	<!-- END #header-wrapper -->
+	</div>
+	
+	<!-- BEGIN .slider -->
+	<div class="slider clearfix">
+		
+		<ul class="slides slide-loader">
+		
+			<li style="background:url(images/slide_01.jpg) no-repeat bottom center">
+				
+				<div class="flex-caption-wrapper">
+					<div class="flex-caption">
+						<p>Change is the end result</p>
+						<div class="clearboth"></div>
+						<p>of all true learning.</p>
+					</div>
+				</div>
+				
+			</li>
+			
+			<li style="background:url(images/slide_02.jpg) no-repeat bottom center">
+				
+				<div class="flex-caption-wrapper">
+					<div class="flex-caption">
+						<p>Supposing is good,</p>
+						<div class="clearboth"></div>
+						<p>but finding out is better.</p>
+					</div>
+				</div>
+				
+			</li>
+			
+			<li style="background:url(images/slide_03.jpg) no-repeat bottom center">
+				
+			</li>
+
+		</ul>
+		
+	<!-- END .slider -->
+	</div>
+	
+	<div class="header-block-wrapper clearfix">
+		
+		<div class="header-block-inner">
+		
+		<a href="typography.html" class="header-block-5 header-block-style-1 clearfix">
+			<img src="images/header_icon_01.png" alt="" />
+			<h2>Our College</h2>
+		</a>
+		
+		<a href="contact.html" class="header-block-5 header-block-style-2 clearfix">
+			<img src="images/header_icon_02.png" alt="" />
+			<h2>Contenidos</h2>
+		</a>
+		
+		<a href="js-elements.html" class="header-block-5 header-block-style-3 clearfix">
+			<img src="images/header_icon_03.png" alt="" />
+			<h2>Premium</h2>
+		</a>
+		
+		<a href="typography.html" class="header-block-5 header-block-style-4 clearfix">
+			<img src="images/header_icon_04.png" alt="" />
+			<h2>La plataforma</h2>
+		</a>
+		
+		<a href="typography.html" class="header-block-5 header-block-style-5 clearfix">
+			<img src="images/header_icon_05.png" alt="" />
+			<h2>Tomar un toour</h2>
+		</a>
+		
+		</div>
+	
+	</div>
+	
+	<!-- BEGIN .content-wrapper -->
+	<div class="content-wrapper clearfix">
+		
+		<!-- BEGIN .content-wrapper-inner -->
+		<div class="content-wrapper-inner clearfix">
+		
+		<!-- BEGIN .sidebar-left -->
+		<div class="sidebar-left page-content">
+			
+			<!-- BEGIN .content-block -->
+			<div class="content-block">
+				
+				<h3 class="block-title">Buscador</h3>
+				<p>Sed turpis tortor ultricies non adipiscing ultrices in orci ut</p>
+				
+				<form method="get" action="#" class="course-finder-form clearfix">
+					
+					<select name="keyword-type">
+						<option value="Course ID">Course ID</option>
+						<option value="Course ID">Course ID</option>
+						<option value="Course ID">Course ID</option>
+					</select>
+				
+					<input type="text" value="Keywords" name="keywords" />
+					<input type="submit" value="Search" />
+				
+				</form>
+			
+			<!-- END .content-block -->	
+			</div>
+		
+			<!-- BEGIN .content-block -->
+			<div class="content-block">
+				
+				<h3 class="block-title"><a href="#">Newsletter</a></h3>
+				<p>Sed turpis tortor ultricies non adipiscing ultrices in orci ut</p>
+				
+				<form method="get" action="#" class="course-finder-form clearfix">
+					<input type="text" value="Email Address" name="email-address" />
+					<input type="submit" value="Subscribe" />
+				</form>
+			
+			<!-- END .content-block -->	
+			</div>
+			
+			<!-- BEGIN .content-block -->
+			<div class="content-block">
+				
+				<h3 class="block-title"><a href="http://www.flickr.com/photos/governoromalley/">Flickr Stream</a></h3>
+			
+				<div class="flickr_badge_wrapper clearfix">
+					<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;flickr_display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=29479066@N07"></script>
+				</div>
+				
+			<!-- END .content-block -->	
+			</div>
+		
+		<!-- END .sidebar-left -->
+		</div>
+		
+		<!-- BEGIN .center-content -->
+		<div class="center-content page-content">
+			
+			<!-- BEGIN .content-block -->
+			<div class="content-block">
+				
+				<h3 class="block-title"><a href="blog.html">Noticias</a></h3>
+				
+				<!-- BEGIN .slider-blocks -->
+				<div class="slider-blocks clearfix">
+					
+					<!-- BEGIN .slides -->
+					<ul class="slides slide-loader2">
+
+						<!-- BEGIN .slides li -->
+						<li>
+							
+							<!-- BEGIN .news-items -->
+							<ul class="news-items">
+							
+								<li class="clearfix">
+									<div class="news-image">
+										<a href="blog-single.html"><img src="images/01_demo_image.jpg" alt="" /></a>
+									</div>
+									<div class="news-content">
+										<h4><a href="blog-single.html">Phasellus tempor purus sed odio metus</a></h4>
+										<p class="news-date">April 19th, 2013</p>
+										<p class="news-excerpt">Sed turpis tortor ultricies non adipiscing ultrices in orci ut a metus quis</p>
+									</div>
+								</li>
+								
+								<li class="clearfix">
+									<div class="news-image">
+										<a href="blog-single.html"><img src="images/10_demo_image.jpg" alt="" /></a>
+									</div>
+									<div class="news-content">
+										<h4><a href="blog-single.html">Phasellus tempor purus sed odio metus</a></h4>
+										<p class="news-date">April 19th, 2013</p>
+										<p class="news-excerpt">Sed turpis tortor ultricies non adipiscing ultrices in orci ut a metus quis</p>
+									</div>
+								</li>
+								
+								<li class="clearfix">
+									<div class="news-image">
+										<a href="blog-single.html"><img src="images/11_demo_image.jpg" alt="" /></a>
+									</div>
+									<div class="news-content">
+										<h4><a href="blog-single.html">Phasellus tempor purus sed odio metus</a></h4>
+										<p class="news-date">April 19th, 2013</p>
+										<p class="news-excerpt">Sed turpis tortor ultricies non adipiscing ultrices in orci ut a metus quis</p>
+									</div>
+								</li>
+								
+							<!-- END .news-items -->
+							</ul>
+							
+						<!-- END .slides li -->
+						</li>
+						
+						<!-- BEGIN .slides li -->
+						<li>
+							
+							<!-- BEGIN .news-items -->
+							<ul class="news-items">
+								
+								<li class="clearfix">
+									<div class="news-image">
+										<a href="blog-single.html"><img src="images/01_demo_image.jpg" alt="" /></a>
+									</div>
+									<div class="news-content">
+										<h4><a href="blog-single.html">Phasellus tempor purus sed odio metus</a></h4>
+										<p class="news-date">April 19th, 2013</p>
+										<p class="news-excerpt">Sed turpis tortor ultricies non adipiscing ultrices in orci ut a metus quis</p>
+									</div>
+								</li>
+								
+								<li class="clearfix">
+									<div class="news-image">
+										<a href="blog-single.html"><img src="images/10_demo_image.jpg" alt="" /></a>
+									</div>
+									<div class="news-content">
+										<h4><a href="blog-single.html">Phasellus tempor purus sed odio metus</a></h4>
+										<p class="news-date">April 19th, 2013</p>
+										<p class="news-excerpt">Sed turpis tortor ultricies non adipiscing ultrices in orci ut a metus quis</p>
+									</div>
+								</li>
+								
+								<li class="clearfix">
+									<div class="news-image">
+										<a href="blog-single.html"><img src="images/11_demo_image.jpg" alt="" /></a>
+									</div>
+									<div class="news-content">
+										<h4><a href="blog-single.html">Phasellus tempor purus sed odio metus</a></h4>
+										<p class="news-date">April 19th, 2013</p>
+										<p class="news-excerpt">Sed turpis tortor ultricies non adipiscing ultrices in orci ut a metus quis</p>
+									</div>
+								</li>
+								
+							<!-- END .news-items -->
+							</ul>
+							
+						<!-- END .slides li -->
+						</li>
+				
+					<!-- END .slides -->
+					</ul>
+					
+				<!-- END .slider-blocks -->
+				</div>
+				
+			<!-- END .content-block -->	
+			</div>
+		
+			<!-- BEGIN .content-block -->
+			<div class="content-block">
+				
+				<h3 class="block-title"><a href="#">Video Tour</a></h3>
+				
+				<div class="video-wrapper">
+					<iframe style="width:100%;" height="215" src="http://player.vimeo.com/video/29521088?autoplay=0&amp;title=0&amp;byline=0&amp;portrait=0;"></iframe>
+				</div>
+				
+				<p>Morbi quam arcu, sagittis sit amet gravida a, pretium id ligula. Sed pelle fermentum aliquam.</p>
+				
+			<!-- END .content-block -->	
+			</div>
+			
+		<!-- END .center-content -->
+		</div>
+		
+		<!-- BEGIN .sidebar-right -->
+		<div class="sidebar-right page-content">
+			
+			<!-- BEGIN .content-block -->
+			<div class="content-block">
+				
+				<h3 class="block-title">Enlaces de interés</h3>
+				
+				<ul>
+					<li>Estudiantes</li>
+					<li>Profesores</li>
+					<li>Portal</li>
+					<li>Foro</li>
+				</ul>
+				
+			<!-- END .content-block -->	
+			</div>
+			
+			<!-- BEGIN .content-block -->
+			<div class="content-block">
+				
+				<h3 class="block-title"><a href="events.html">Events</a></h3>
+				
+				<ul class="event-list">
+				
+					<!-- BEGIN .event-wrapper -->
+					<li class="event-wrapper clearfix">
+					
+						<div class="event-date">
+							<div class="event-m">Feb</div>
+							<div class="event-d">08</div>	
+						</div>
+				
+						<div class="event-info">
+							<h4><a href="events-single.html">In molestie congu enim sit amet</a></h4>
+							<p>9:00am to 1:00pm</p>
+						</div>
+				
+					<!-- END .event-wrapper -->
+					</li>
+				
+					<!-- BEGIN .event-wrapper -->
+					<li class="event-wrapper clearfix">
+					
+						<div class="event-date">
+							<div class="event-m">Feb</div>
+							<div class="event-d">08</div>	
+						</div>
+				
+						<div class="event-info">
+							<h4><a href="events-single.html">In molestie congu enim sit amet</a></h4>
+							<p>9:00am to 1:00pm</p>
+						</div>
+				
+					<!-- END .event-wrapper -->
+					</li>
+					
+					<!-- BEGIN .event-wrapper -->
+					<li class="event-wrapper clearfix">
+					
+						<div class="event-date">
+							<div class="event-m">Feb</div>
+							<div class="event-d">08</div>	
+						</div>
+				
+						<div class="event-info">
+							<h4><a href="events-single.html">In molestie congu enim sit amet</a></h4>
+							<p>9:00am to 1:00pm</p>
+						</div>
+				
+					<!-- END .event-wrapper -->
+					</li>
+				
+				</ul>
+				
+			<!-- END .content-block -->	
+			</div>
+			
+			<!-- BEGIN .content-block -->
+			<div class="content-block">
+					
+				<h3 class="block-title"><a href="#">Sponsors </a></h3>
+				
+					<!-- BEGIN .slider-blocks -->
+					<div class="slider-blocks clearfix">
+
+						<!-- BEGIN .slides -->
+						<ul class="slides slide-loader2">
+
+							<!-- BEGIN .slides li -->
+							<li>
+								
+								<div class="center-images">
+									<a href="#"><img src="images/sponsor_01.png" alt="" class="content-img" /></a>
+									<a href="#"><img src="images/sponsor_02.png" alt="" class="content-img" /></a>
+									<a href="#"><img src="images/sponsor_03.png" alt="" class="content-img" /></a>
+									<a href="#"><img src="images/sponsor_04.png" alt="" class="content-img" /></a>
+								</div>
+								
+							<!-- END .slides li -->
+							</li>
+
+							<!-- BEGIN .slides li -->
+							<li>
+
+								<div class="center-images">
+									<a href="#"><img src="images/sponsor_01.png" alt="" class="content-img" /></a>
+									<a href="#"><img src="images/sponsor_02.png" alt="" class="content-img" /></a>
+									<a href="#"><img src="images/sponsor_03.png" alt="" class="content-img" /></a>
+									<a href="#"><img src="images/sponsor_04.png" alt="" class="content-img" /></a>
+								</div>
+
+							<!-- END .slides li -->
+							</li>
+
+						<!-- END .slides -->
+						</ul>
+
+					<!-- END .slider-blocks -->
+					</div>
+				
+			<!-- END .content-block -->
+			</div>
+		
+		<!-- END .sidebar-right -->
+		</div>
+		
+		<!-- END .content-wrapper-inner -->
+		</div>
+		
+	<!-- END .content-wrapper -->
+	</div>
+	
+	<!-- BEGIN #footer-wrapper -->
+	<div id="footer-wrapper">
+		
+		<!-- BEGIN #footer -->
+		
+			
+			<ul class="columns-4 clearfix">
+				
+				<li class="col">
+					<div class="widget-title clearfix">
+						<h4>Nosotros</h4>
+						<div class="widget-title-block"></div>
+					</div>
+					<p></p>
+				</li>
+				
+				<li class="col">
+					<div class="widget-title clearfix">
+						<h4>Nube de tags</h4>
+						<div class="widget-title-block"></div>
+					</div>
+					
+					<ul class="wp-tag-cloud">
+						<li><a href="#">Education</a></li>
+						<li><a href="#">University</a></li>
+						<li><a href="#">College</a></li>
+						<li><a href="#">Learning</a></li>
+						<li><a href="#">Art</a></li>
+						<li><a href="#">Design</a></li>
+						<li><a href="#">Music</a></li>
+						<li><a href="#">Environment</a></li>
+					</ul>
+					
+				</li>
+				
+				<li class="col">
+					<div class="widget-title clearfix">
+						<h4>Twitter Feed</h4>
+						<div class="widget-title-block"></div>
+					</div>
+		
+					<ul id="twitter_update_list">
+						<li>Twitter feed loading</li>
+					</ul>
+					
+					<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
+					<script type="text/javascript" src="http://api.twitter.com/1/statuses/user_timeline/quitenicestuff.json?callback=twitterCallback2&amp;count=2"></script>
+					
+				</li>
+				
+				<li class="col">
+					<div class="widget-title clearfix">
+						<h4> Posts recientes</h4>
+						<div class="widget-title-block"></div>
+					</div>
+					
+					<ul>
+						<li><a href="blog-single.html">Proin imperdiet adipiscing elit</a></li>
+						<li><a href="blog-single.html">Vestibulum blandit</a></li>
+						<li><a href="blog-single.html">Nulla semper arcu at tincidunt</a></li>
+						<li><a href="blog-single.html">Morbi quam arcu sagittis</a></li>
+					</ul>
+					
+				</li>
+			
+			</ul>
+			
+			<div id="footer-bottom" class="clearfix">
+				<p class="fl">Copyright - <a href="#">ParkCollege</a> by <a href="#">Quite Nice Stuff</a></p>
+				<p class="go-up fr"><a href="#top" class="scrollup">Top</a></p>
+			</div>
+			
+		<!-- END #footer -->
+		
+	
+	<!-- END #footer-wrapper -->
+	</div>
+
+
     </h:body>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    
 </html>
-
