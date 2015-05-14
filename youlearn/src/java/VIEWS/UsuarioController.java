@@ -1,11 +1,15 @@
 package VIEWS;
 
+import ENTITIES.Perfil;
 import ENTITIES.Usuario;
 import VIEWS.util.JsfUtil;
 import VIEWS.util.PaginationHelper;
 import MODEL.UsuarioFacade;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -38,6 +42,12 @@ public class UsuarioController implements Serializable {
             selectedItemIndex = -1;
         }
         return current;
+    }
+    
+      public Perfil retornaPerfilNormal(){
+        Perfil a = new Perfil();
+        a.setIdPerfil(5);
+        return a;
     }
 
     private UsuarioFacade getFacade() {
@@ -81,6 +91,11 @@ public class UsuarioController implements Serializable {
 
     public String create() {
         try {
+             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();            
+            String fecha = dateFormat.format(date);//"1990/11/11 11:11:11";
+            current.setFechaCreacion(dateFormat.parse(fecha));
+            current.setIdPerfil(retornaPerfilNormal());
             getFacade().create(current);
             JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsuarioCreated"));
             return prepareCreate();
