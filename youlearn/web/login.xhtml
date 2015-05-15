@@ -178,30 +178,32 @@
 			
 			<p>&nbsp;</p>
 			
-			<form action="#" id="contactform" class="clearfix" method="post">
+			<h:form  id="contactform" class="clearfix">
 
 				<div class="field-row">
 					<label for="user">Usuario</label>
-				    <h:inputText class="text_input" id="user" value="" size="10" />
+                                        <h:inputText class="text_input" id="user" value="#{usuarioController.nombreUsuario}" size="10" />
 				</div>
 
 				<div class="field-row">
 				  <label for="password">Password</label>
 			
-                                            <h:inputText class="text_input" id="password" value="" size="10" />
+                                  <h:inputText class="text_input" id="password" value="#{usuarioController.contraseña}" size="10" />
 				</div>
+                       
 
 			  <div class="field-row">
 
 				<p>
-				  <input class="button1" type="submit" value="Login" id="submit" name="submit">
-                                  </input>
+                                    <h:commandButton class="button1" value="Login" id="submit" action="#{usuarioController.acceso()}">
+                                  </h:commandButton>
+                                  
 				  </p>
 				<p><a href="#"> ¿No tienes una cuenta? </a></p>
                                  
               </div>
                                
-			</form>
+                        </h:form>
 			
 			<!-- END .inner-content-wrapper -->
 			</div>

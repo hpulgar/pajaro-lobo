@@ -6,6 +6,8 @@ import VIEWS.util.PaginationHelper;
 import MODEL.ForoPosteosFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -18,6 +20,7 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 
+
 @Named("foroPosteosController")
 @SessionScoped
 public class ForoPosteosController implements Serializable {
@@ -28,6 +31,66 @@ public class ForoPosteosController implements Serializable {
     private MODEL.ForoPosteosFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private List<ForoPosteos> carga = new ArrayList();
+
+    public ForoPosteos getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(ForoPosteos current) {
+        this.current = current;
+    }
+
+    public ForoPosteosFacade getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public void setEjbFacade(ForoPosteosFacade ejbFacade) {
+        this.ejbFacade = ejbFacade;
+    }
+
+    public int getSelectedItemIndex() {
+        return selectedItemIndex;
+    }
+
+    public void setSelectedItemIndex(int selectedItemIndex) {
+        this.selectedItemIndex = selectedItemIndex;
+    }
+
+    public List<ForoPosteos> getCarga() {
+        return carga;
+    }
+
+    public void setCarga(List<ForoPosteos> carga) {
+        this.carga = carga;
+    }
+
+    public List<ForoPosteos> getCarga2() {
+        return carga2;
+    }
+
+    public void setCarga2(List<ForoPosteos> carga2) {
+        this.carga2 = carga2;
+    }
+
+    public String getTit() {
+        return tit;
+    }
+
+    public void setTit(String tit) {
+        this.tit = tit;
+    }
+
+    public int getIdPost() {
+        return idPost;
+    }
+
+    public void setIdPost(int idPost) {
+        this.idPost = idPost;
+    }
+    private List<ForoPosteos> carga2 = new ArrayList();
+    private String tit;
+    private int idPost;
 
     public ForoPosteosController() {
     }
@@ -178,6 +241,29 @@ public class ForoPosteosController implements Serializable {
         getPagination().previousPage();
         recreateModel();
         return "List";
+    }
+    
+    
+         public List<ForoPosteos> cargaPosts(int idsc)
+    {
+        if(idsc == 0)
+        {
+            carga.clear();
+            return carga = ejbFacade.findAll();
+        }else
+        {
+            carga.clear();
+            carga2.clear();
+            carga = ejbFacade.findAll();
+            for(int i=0;i<carga.size();i++)
+            {
+                if(carga.get(i).getIdSubcategoria().getIdSubcategoria() == idsc)
+                {
+                    carga2.add(carga.get(i));
+                }
+            }
+            return carga2;
+        }
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {
