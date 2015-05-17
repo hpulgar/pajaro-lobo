@@ -265,6 +265,29 @@ public class ForoPosteosController implements Serializable {
             return carga2;
         }
     }
+         
+         //experimental,no testeado
+         public List<ForoPosteos> cargaPostsNoticias(int idsc)
+    {
+        if(idsc == 0)
+        {
+            carga.clear();
+            return carga = ejbFacade.findAll();
+        }else
+        {
+            carga.clear();
+            carga2.clear();
+            carga = ejbFacade.findAll();//definir query que busque id noticias
+            for(int i=0;i<carga.size();i++)
+            {
+                if(carga.get(i).getIdSubcategoria().getIdSubcategoria() == idsc)
+                {
+                    carga2.add(carga.get(i));
+                }
+            }
+            return carga2;
+        }
+    }
 
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);

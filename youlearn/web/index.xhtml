@@ -1,7 +1,8 @@
-<?xml version='1.0' encoding='UTF-8' ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
 
 
@@ -49,10 +50,10 @@
 			<div id="header-top" class="clearfix">
 			
 			  <ul class="top-left-nav clearfix">
-					<li><a href="#">Link1</a><span>/</span></li>
-					<li><a href="#">Link2</a><span>/</span></li>
-				<li><a href="#">Link3</a><span>/</span></li>
-					<li><a href="#">Link4</a><span>/</span></li>
+			<h:outputText value="Bienvenido: #{perfilController.nPerfil(usuarioController.idProfile)}"/><br/>
+                    
+                       <h:outputText  value ="¿No tienes una cuenta? Para crear una haz click " rendered="#{menuController.logeado()}"/>
+                       <h:link value="aqui" outcome="login.xhtml" rendered="#{menuController.logeado()}"/><br/>
 				
 				</ul>
 			
@@ -68,20 +69,9 @@
 			<div id="header-content-wrapper" class="clearfix">
 			
 				<div id="logo">
-					<h1><a href="index.html"><span>You</span>Learn</a></h1>
+					<h1><a href="index.xhtml"><span>You</span>Learn</a></h1>
 				</div>
 			
-				<ul class="social-icons clearfix">	
-					<li><a target="_blank" href="#"><span class="twitter-icon"></span></a></li>
-					<li><a target="_blank" href="#"><span class="facebook-icon"></span></a></li>
-					<li><a target="_blank" href="#"><span class="gplus-icon"></span></a></li>
-					<li><a target="_blank" href="#"><span class="pinterest-icon"></span></a></li>
-					<li><a target="_blank" href="#"><span class="flickr-icon"></span></a></li>
-					<li><a target="_blank" href="#"><span class="youtube-icon"></span></a></li>
-					<li><a target="_blank" href="#"><span class="vimeo-icon"></span></a></li>
-					<li><a target="_blank" href="#"><span class="skype-icon"></span></a></li>
-					<li><a target="_blank" href="#"><span class="rss-icon"></span></a></li>
-				</ul>
 			
 			<!-- END #header-content-wrapper -->
 			</div>
@@ -93,7 +83,12 @@
 				<ul id="main-menu">
 					
 					<li class="current_page_item"><a href="index.xhtml">Home</a></li>
-					<li><a href="typography.html">Nosotros</a></li>
+                                        <h:form>
+                                          
+                                            <li><h:commandLink  value="Mi Perfil" rendered="#{menuController.logeado()}"></h:commandLink></li>
+                                        </h:form>
+                                        <li><a href="typography.html">Nosotros</a></li>
+                                        
 					<li><a href="courses.html">Cursos</a>
 						<ul>
 							<li><a href="courses-single.html">Course Name #1</a></li>
@@ -193,7 +188,7 @@
 		
 		<a href="typography.html" class="header-block-5 header-block-style-1 clearfix">
 			<img src="images/header_icon_01.png" alt="" />
-			<h2>Our College</h2>
+			<h2>Que es YouLearn</h2>
 		</a>
 		
 		<a href="contact.html" class="header-block-5 header-block-style-2 clearfix">
@@ -213,7 +208,7 @@
 		
 		<a href="typography.html" class="header-block-5 header-block-style-5 clearfix">
 			<img src="images/header_icon_05.png" alt="" />
-			<h2>Tomar un toour</h2>
+			<h2>Tomar un tour</h2>
 		</a>
 		
 		</div>
@@ -252,30 +247,9 @@
 			</div>
 		
 			<!-- BEGIN .content-block -->
-			<div class="content-block">
-				
-				<h3 class="block-title"><a href="#">Newsletter</a></h3>
-				<p>Sed turpis tortor ultricies non adipiscing ultrices in orci ut</p>
-				
-				<form method="get" action="#" class="course-finder-form clearfix">
-					<input type="text" value="Email Address" name="email-address" />
-					<input type="submit" value="Subscribe" />
-				</form>
-			
-			<!-- END .content-block -->	
-			</div>
 			
 			<!-- BEGIN .content-block -->
-			<div class="content-block">
-				
-				<h3 class="block-title"><a href="http://www.flickr.com/photos/governoromalley/">Flickr Stream</a></h3>
 			
-				<div class="flickr_badge_wrapper clearfix">
-					<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;flickr_display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=29479066@N07"></script>
-				</div>
-				
-			<!-- END .content-block -->	
-			</div>
 		
 		<!-- END .sidebar-left -->
 		</div>
@@ -300,39 +274,26 @@
 							<!-- BEGIN .news-items -->
 							<ul class="news-items">
 							
-								<li class="clearfix">
+                                                            <c:forEach items="#{foroPosteosController.cargaPostsNoticias(idsc)}" var="f" rendered="false">
+                                            <span class="level">#{f.idSubcategoria.titulo}</span>
+                                
+                                     <li class="clearfix">
                                                                    
 									<div class="news-image">
 										<a href="blog-single.html"><img src="images/01_demo_image.jpg" alt="" /></a>
 									</div>
 									<div class="news-content">
-										<h4><a href="blog-single.html">Phasellus tempor purus sed odio metus</a></h4>
-										<p class="news-date">April 19th, 2013</p>
-										<p class="news-excerpt">Sed turpis tortor ultricies non adipiscing ultrices in orci ut a metus quis</p>
+										<h4><a href="blog-single.html">#{f.idSubcategoria.titulo}</a></h4>
+                                                                                <p class="news-date">#{f.idSubcategoria.subcateFecha}</p>
+                                                                                <p class="news-excerpt">#{f.idSubcategoria.descripcion}</p>
 									</div>
 								</li>
+                                
+                                       
+                               
+                                        </c:forEach>
 								
-								<li class="clearfix">
-									<div class="news-image">
-										<a href="blog-single.html"><img src="images/10_demo_image.jpg" alt="" /></a>
-									</div>
-									<div class="news-content">
-										<h4><a href="blog-single.html">Phasellus tempor purus sed odio metus</a></h4>
-										<p class="news-date">April 19th, 2013</p>
-										<p class="news-excerpt">Sed turpis tortor ultricies non adipiscing ultrices in orci ut a metus quis</p>
-									</div>
-								</li>
 								
-								<li class="clearfix">
-									<div class="news-image">
-										<a href="blog-single.html"><img src="images/11_demo_image.jpg" alt="" /></a>
-									</div>
-									<div class="news-content">
-										<h4><a href="blog-single.html">Phasellus tempor purus sed odio metus</a></h4>
-										<p class="news-date">April 19th, 2013</p>
-										<p class="news-excerpt">Sed turpis tortor ultricies non adipiscing ultrices in orci ut a metus quis</p>
-									</div>
-								</li>
 								
 							<!-- END .news-items -->
 							</ul>
@@ -392,21 +353,10 @@
 				</div>
 				
 			<!-- END .content-block -->	
-			</div>
+		</div>
 		
 			<!-- BEGIN .content-block -->
-			<div class="content-block">
-				
-				<h3 class="block-title"><a href="#">Video Tour</a></h3>
-				
-				<div class="video-wrapper">
-					
-				</div>
-				
-				<p>Morbi quam arcu, sagittis sit amet gravida a, pretium id ligula. Sed pelle fermentum aliquam.</p>
-				
-			<!-- END .content-block -->	
-			</div>
+			
 			
 		<!-- END .center-content -->
 		</div>
@@ -428,51 +378,7 @@
 			
 		
 			
-			<!-- BEGIN .content-block -->
-			<div class="content-block">
-					
-				<h3 class="block-title"><a href="#">Sponsors </a></h3>
-				
-					<!-- BEGIN .slider-blocks -->
-					<div class="slider-blocks clearfix">
-
-						<!-- BEGIN .slides -->
-						<ul class="slides slide-loader2">
-
-							<!-- BEGIN .slides li -->
-							<li>
-								
-								<div class="center-images">
-									<a href="#"><img src="images/sponsor_01.png" alt="" class="content-img" /></a>
-									<a href="#"><img src="images/sponsor_02.png" alt="" class="content-img" /></a>
-									<a href="#"><img src="images/sponsor_03.png" alt="" class="content-img" /></a>
-									<a href="#"><img src="images/sponsor_04.png" alt="" class="content-img" /></a>
-								</div>
-								
-							<!-- END .slides li -->
-							</li>
-
-							<!-- BEGIN .slides li -->
-							<li>
-
-								<div class="center-images">
-									<a href="#"><img src="images/sponsor_01.png" alt="" class="content-img" /></a>
-									<a href="#"><img src="images/sponsor_02.png" alt="" class="content-img" /></a>
-									<a href="#"><img src="images/sponsor_03.png" alt="" class="content-img" /></a>
-									<a href="#"><img src="images/sponsor_04.png" alt="" class="content-img" /></a>
-								</div>
-
-							<!-- END .slides li -->
-							</li>
-
-						<!-- END .slides -->
-						</ul>
-
-					<!-- END .slider-blocks -->
-					</div>
-				
-			<!-- END .content-block -->
-			</div>
+			
 		
 		<!-- END .sidebar-right -->
 		</div>
