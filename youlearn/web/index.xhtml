@@ -50,10 +50,11 @@
 			<div id="header-top" class="clearfix">
 			
 			  <ul class="top-left-nav clearfix">
-			<h:outputText value="Bienvenido: #{perfilController.nPerfil(usuarioController.idProfile)}"/><br/>
-                    
-                       <h:outputText  value ="¿No tienes una cuenta? Para crear una haz click " rendered="#{menuController.logeado()}"/>
-                       <h:link value="aqui" outcome="login.xhtml" rendered="#{menuController.logeado()}"/><br/>
+                              <h:outputText  value="Bienvenido: #{perfilController.nPerfil(usuarioController.idProfile)}"/><br/>
+                              <h:form>
+                              <h:commandLink  action="#{usuarioController.logout()}" value="Logout " rendered="#{menuController.logeado()}"/>
+                              </h:form>
+                       <h:link value="Iniciar sesion" outcome="login.xhtml" rendered="#{menuController.noLogeado()}"/><br/>
 				
 				</ul>
 			
@@ -85,27 +86,25 @@
 					<li class="current_page_item"><a href="index.xhtml">Home</a></li>
                                         <h:form>
                                           
-                                            <li><h:commandLink  value="Mi Perfil" rendered="#{menuController.logeado()}"></h:commandLink></li>
+                                            <li><h:commandLink  value="Perfil" rendered="#{menuController.logeado()}"></h:commandLink>
+                                                <ul>
+                                                    <li><a href="courses-single.html">Informacion</a></li>
+							<li><a href="courses-single.html">Cursos</a></li>
+                                                        <li><a href="courses-single.html">Mensajes</a></li>
+                                                </ul>
+                                            </li>
                                         </h:form>
-                                        <li><a href="typography.html">Nosotros</a></li>
+                                       
                                         
 					<li><a href="courses.html">Cursos</a>
 						<ul>
-							<li><a href="courses-single.html">Course Name #1</a></li>
-							<li><a href="courses-single.html">Course Name #2</a></li>
-							<li><a href="courses-single.html">Course Name #3</a>
-								<ul>
-									<li><a href="courses-single.html">Course Name #1</a></li>
-									<li><a href="courses-single.html">Course Name #2</a></li>
-									<li><a href="courses-single.html">Course Name #3</a></li>
-								</ul>
-							</li>
-							<li><a href="courses-single.html">Course Name #4</a></li>
-							<li><a href="courses-single.html">Course Name #5</a></li>
-							<li><a href="courses-single.html">Course Name #6</a></li>
+							<li><a href="#">Mis cursos</a></li>
+							<li><a href="#">Buscar cursos</a></li>
+							<li><a href="#">Crear un curso</a></li>
+
 						</ul>
 					</li>
-					<li><a href="blog.html">Blog</a></li>
+			
 					<li><a href="typography.html">Caracteristicas</a>
 						<ul>
 							<li><a href="events.html">Events</a></li>
@@ -125,7 +124,8 @@
 							<li><a href="typography.html">Typography</a></li>
 						</ul>
 					</li>
-					<li><a href="contact.html">Contactenos</a></li>
+                                         <li><a href="typography.html">Nosotros</a></li>
+					<li><a href="contact.html">Contacto</a></li>
 					
 				<!-- END #main-menu -->
 				</ul>
@@ -153,9 +153,9 @@
 				
 				<div class="flex-caption-wrapper">
 					<div class="flex-caption">
-						<p>Change is the end result</p>
+						<p>Se parte de la comunidad</p>
 						<div class="clearboth"></div>
-						<p>of all true learning.</p>
+						<p>Participa!</p>
 					</div>
 				</div>
 				
@@ -165,9 +165,9 @@
 				
 				<div class="flex-caption-wrapper">
 					<div class="flex-caption">
-						<p>Supposing is good,</p>
+						<p>Novedodos cursos</p>
 						<div class="clearboth"></div>
-						<p>but finding out is better.</p>
+						<p>Aprende hoy!</p>
 					</div>
 				</div>
 				
@@ -186,10 +186,18 @@
 		
 		<div class="header-block-inner">
 		
-		<a href="typography.html" class="header-block-5 header-block-style-1 clearfix">
+                                              
+                    <h:link outcome="register.xhtml" class="header-block-5 header-block-style-2 clearfix" rendered="#{menuController.noLogeado()}">
 			<img src="images/header_icon_01.png" alt="" />
-			<h2>Que es YouLearn</h2>
-		</a>
+			<h2>Registro</h2>
+                      </h:link>
+                    
+                     <h:link outcome="foro.xhtml" class="header-block-5 header-block-style-2 clearfix" rendered="#{menuController.logeado()}">
+			<img src="images/header_icon_01.png" alt="" />
+			<h2>Foro</h2>
+                      </h:link>
+                                      
+                                                  
 		
 		<a href="contact.html" class="header-block-5 header-block-style-2 clearfix">
 			<img src="images/header_icon_02.png" alt="" />
@@ -228,18 +236,17 @@
 			<div class="content-block">
 				
 				<h3 class="block-title">Buscador</h3>
-				<p>Sed turpis tortor ultricies non adipiscing ultrices in orci ut</p>
+				<p>Selecciona un criterio de busqueda</p>
 				
 				<form method="get" action="#" class="course-finder-form clearfix">
 					
 					<select name="keyword-type">
-						<option value="Course ID">Course ID</option>
-						<option value="Course ID">Course ID</option>
-						<option value="Course ID">Course ID</option>
+						<option value="Course ID">ID Curso</option>
+						
 					</select>
 				
-					<input type="text" value="Keywords" name="keywords" />
-					<input type="submit" value="Search" />
+					<input type="text" value="Ingrese una busqueda" name="keywords" />
+					<input type="submit" value="Buscar" />
 				
 				</form>
 			
@@ -370,7 +377,22 @@
 				<h3 class="block-title">Ultimos cursos nuevos</h3>
 				
 				<ul>
-					<li></li>
+                                    <li>
+                                        
+                                    </li>
+				</ul>
+				
+			<!-- END .content-block -->	
+			</div>
+                        
+                        <div class="content-block">
+				
+				<h3 class="block-title">Ultimos comentarios</h3>
+				
+				<ul>
+                                    <li>
+                                        
+                                    </li>
 				</ul>
 				
 			<!-- END .content-block -->	
@@ -399,60 +421,37 @@
 				
 				<li class="col">
 					<div class="widget-title clearfix">
-						<h4>About Us</h4>
+						<h4>Nosotros</h4>
 						<div class="widget-title-block"></div>
 					</div>
-					<p>Quisque bibendum erat feugiat rhoncus tincidunt ipsum mi facilisis nisl, nec eleifend enim massa ac purus. Integer malesuada faucibus auctor vivamus accumsan justo.</p>
+					<p></p>
+				</li>
+				
+                            <li class="col">
+					<div class="widget-title clearfix">
+						<h4>Creditos</h4>
+						<div class="widget-title-block"></div>
+					</div>
+					<p></p>
 				</li>
 				
 				<li class="col">
 					<div class="widget-title clearfix">
-						<h4>Tag Cloud</h4>
+						<h4>Mapa del sitio</h4>
 						<div class="widget-title-block"></div>
 					</div>
-					
-					<ul class="wp-tag-cloud">
-						<li><a href="#">Education</a></li>
-						<li><a href="#">University</a></li>
-						<li><a href="#">College</a></li>
-						<li><a href="#">Learning</a></li>
-						<li><a href="#">Art</a></li>
-						<li><a href="#">Design</a></li>
-						<li><a href="#">Music</a></li>
-						<li><a href="#">Environment</a></li>
-					</ul>
-					
+					<p></p>
 				</li>
 				
-				<li class="col">
+                            
+                            <li class="col">
 					<div class="widget-title clearfix">
-						<h4>Twitter Feed</h4>
+						<h4>Redes sociales</h4>
 						<div class="widget-title-block"></div>
 					</div>
-		
-					<ul id="twitter_update_list">
-						<li>Twitter feed loading</li>
-					</ul>
-					
-					<script type="text/javascript" src="http://twitter.com/javascripts/blogger.js"></script>
-					<script type="text/javascript" src="http://api.twitter.com/1/statuses/user_timeline/quitenicestuff.json?callback=twitterCallback2&amp;count=2"></script>
-					
+					<p></p>
 				</li>
 				
-				<li class="col">
-					<div class="widget-title clearfix">
-						<h4>Recent Posts</h4>
-						<div class="widget-title-block"></div>
-					</div>
-					
-					<ul>
-						<li><a href="blog-single.html">Proin imperdiet adipiscing elit</a></li>
-						<li><a href="blog-single.html">Vestibulum blandit</a></li>
-						<li><a href="blog-single.html">Nulla semper arcu at tincidunt</a></li>
-						<li><a href="blog-single.html">Morbi quam arcu sagittis</a></li>
-					</ul>
-					
-				</li>
 			
 			</ul>
 			

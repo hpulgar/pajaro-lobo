@@ -277,11 +277,13 @@ public class ForoPosteosController implements Serializable {
         {
             carga.clear();
             carga2.clear();
-            carga = ejbFacade.findAll();//definir query que busque id noticias
+            carga = ejbFacade.findAll();
             for(int i=0;i<carga.size();i++)
             {
                 if(carga.get(i).getIdSubcategoria().getIdSubcategoria() == idsc)
                 {
+                    
+                    System.out.println("Valor"+ carga.get(i).getIdSubcategoria().getIdSubcategoria());
                     carga2.add(carga.get(i));
                 }
             }

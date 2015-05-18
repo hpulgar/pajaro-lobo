@@ -320,9 +320,7 @@ public class UsuarioController implements Serializable {
     
         private boolean verifica(String nombreU,String passU)
     {
-        System.out.println("DATA");
-        System.out.println("USUARIO "+ nombreU);
-         System.out.println("password "+ passU);
+        
         getPerfil(nombreU,passU);
         return !ejbFacade.log(nombreU, passU).isEmpty();
        
@@ -338,6 +336,8 @@ public class UsuarioController implements Serializable {
              session.setAttribute("id_perfil", getIdProfile());
              session.setAttribute("username", getNombreUsuario());
               session.setAttribute("id_usuario", getId_user());
+              
+         
           
            setCookie("CookieValue","CookieStorage",3000000);
            getCookie("CookieValue");
@@ -349,14 +349,23 @@ public class UsuarioController implements Serializable {
        else
        {
            FacesContext.getCurrentInstance().addMessage(null,new FacesMessage(FacesMessage.SEVERITY_WARN,
-                    "Login Invalido",
+                    "Login Invalido,Intentalo denuevo",
                     "Intentalo denuevo"));
                     return "login";
            
        }
    }
      
-     public void setCookie(String name, String value,int expiry) {
+    
+     
+     public String logout() {
+      HttpSession session = Util.getSession();
+      session.invalidate();
+      return "/login";
+   }
+
+
+  public void setCookie(String name, String value, int expiry) {
 
     FacesContext facesContext = FacesContext.getCurrentInstance();
 
@@ -384,9 +393,9 @@ public class UsuarioController implements Serializable {
 
     HttpServletResponse response = (HttpServletResponse) facesContext.getExternalContext().getResponse();
     response.addCookie(cookie);
-}
+  }
 
-public Cookie getCookie(String name) {
+  public Cookie getCookie(String name) {
 
     FacesContext facesContext = FacesContext.getCurrentInstance();
 
@@ -397,13 +406,15 @@ public Cookie getCookie(String name) {
     if (userCookies != null && userCookies.length > 0 ) {
         for (int i = 0; i < userCookies.length; i++) {
             if (userCookies[i].getName().equals(name)) {
-             cookie = userCookies[i];
+                cookie = userCookies[i];
                 return cookie;
             }
         }
     }
     return null;
-}
+  }
+
+
 
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);

@@ -145,7 +145,7 @@ public class MenuController implements Serializable {
      public boolean noLogeado()
      {
          HttpSession sess = Util.getSession();
-        return sess.getAttribute("username") != null;
+        return sess.getAttribute("username") == null;
      }
 
     private void performDestroy() {
