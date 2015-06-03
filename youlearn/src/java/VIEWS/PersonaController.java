@@ -6,6 +6,8 @@ import VIEWS.util.PaginationHelper;
 import MODEL.PersonaFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -28,6 +30,48 @@ public class PersonaController implements Serializable {
     private MODEL.PersonaFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+    private List<Persona> cargaPer = new ArrayList();
+     private List<Persona> carga2 = new ArrayList();
+
+    public List<Persona> getCarga2() {
+        return carga2;
+    }
+
+    public void setCarga2(List<Persona> carga2) {
+        this.carga2 = carga2;
+    }
+
+    public Persona getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(Persona current) {
+        this.current = current;
+    }
+
+    public PersonaFacade getEjbFacade() {
+        return ejbFacade;
+    }
+
+    public void setEjbFacade(PersonaFacade ejbFacade) {
+        this.ejbFacade = ejbFacade;
+    }
+
+    public int getSelectedItemIndex() {
+        return selectedItemIndex;
+    }
+
+    public void setSelectedItemIndex(int selectedItemIndex) {
+        this.selectedItemIndex = selectedItemIndex;
+    }
+
+    public List<Persona> getCargaPer() {
+        return cargaPer;
+    }
+
+    public void setCargaPer(List<Persona> cargaPer) {
+        this.cargaPer = cargaPer;
+    }
 
     public PersonaController() {
     }
@@ -43,6 +87,12 @@ public class PersonaController implements Serializable {
     private PersonaFacade getFacade() {
         return ejbFacade;
     }
+    
+    public boolean datosVacios(){
+         return carga2.isEmpty();
+           
+      
+     }
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
@@ -94,6 +144,19 @@ public class PersonaController implements Serializable {
         current = (Persona) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
+    }
+    
+     public void prepareEditPerfil(int idUsur) {//Carga usuario dependiendo de la id perfil para poder editar
+       
+        cargaPer.clear();
+        cargaPer = ejbFacade.findAll();
+        for(int i=0;i<cargaPer.size();i++)
+        {
+            if(cargaPer.get(i).getIdUsuario() == idUsur)
+            {
+                current = cargaPer.get(i);
+            }
+        }
     }
 
     public String update() {
