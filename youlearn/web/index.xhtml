@@ -88,7 +88,7 @@
                                           
                                             <li><h:commandLink  value="Perfil" rendered="#{menuController.logeado()}"></h:commandLink>
                                                 <ul>
-                                                    <li><a href="courses-single.html">Informacion</a></li>
+                                                    <li><a href="cuenta.xhtml">Informacion</a></li>
 							<li><a href="courses-single.html">Cursos</a></li>
                                                         <li><a href="courses-single.html">Mensajes</a></li>
                                                 </ul>
@@ -98,9 +98,9 @@
                                         
 					<li><a href="courses.html">Cursos</a>
 						<ul>
-							<li><a href="#">Mis cursos</a></li>
+                                                    <li><h:commandLink  value="Mis cursos" rendered="#{menuController.logeado()}"></h:commandLink></li>
 							<li><a href="#">Buscar cursos</a></li>
-							<li><a href="#">Crear un curso</a></li>
+                                                        <li><h:commandLink  value="Crear un curso" rendered="#{menuController.logeado()}"></h:commandLink></li>
 
 						</ul>
 					</li>
