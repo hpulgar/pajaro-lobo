@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
 
 
@@ -152,7 +153,7 @@
 		</div>
 		
 		<div class="breadcrumbs">
-			<p><a href="index-2.html">Home</a> &#187; Mi cuenta</p>
+			<p><a href="index.xhtml">Home</a> &#187; Mi cuenta</p>
 		</div>
 		
 		</div>
@@ -176,35 +177,71 @@
 				<div class="teacher-entry clearfix">
 					
 					<div class="teacher-image">
-						<img src="images/default_user.png" alt="" />
+						<img src="images/default_user.png" alt="" /><br></br>
                                            
 					</div>
 					
-					<h3>Información de la cuenta</h3>
-                                        <h:outputText  value ="Los datos de su cuenta aun no están completos " rendered="#{personaController.datosVacios()}"/><br></br>
-                 <h:link value="haga click" onclick="#{personaController.prepareEditPerfil(usuarioController.id_user)}" outcome="editar_cuenta.xhtml" rendered="#{personaController.datosVacios()}"/>
-                       <h:outputText  value =" para completarlos" rendered="#{personaController.datosVacios()}"/>
-                       <h:dataTable style="width:100%;" >
-                            <c:forEach items="#{personaController.cargaDatos2(usuarioController.id_user)}" var="vv" rendered="#{personaController.datosVacios()}">
-				<thead>
-					<tr>
-						<th></th>
-						<th></th>
-						
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td data-title="Column 1">Nombre</td>
-						<td>#{vv.nombre}</td>
-						
-					</tr>
-					
-					
-					
-				</tbody>
-                            </c:forEach>
-                       </h:dataTable>
+                                    <h3>Editar informacion de la cuenta</h3><br></br>
+                                        
+                   <br></br>  <h:form  id="contactform" class="clearfix">
+
+				<br></br><br></br><div class="field-row">
+				<br></br>	<br></br><label for="nombre">Nombre</label>
+                                        <h:inputText class="text_input" id="nombre" value="#{personaController.selected.nombre}" size="10" />
+				</div>
+
+				<div class="field-row">
+				  <label for="apellido">Apellido</label>
+			
+                                  <h:inputText class="text_input" id="apellido" value="#{personaController.selected.apellido}" size="10" />
+				</div>
+                         
+                         <div class="field-row">
+				  <label for="ocupacion">Ocupacion</label>
+			
+                                  <h:inputText class="text_input" id="ocupacion" value="#{personaController.selected.ocupacion}" size="10" />
+				</div>
+                         
+                         
+                         <div class="field-row">
+				  <label for="fecha">Fecha de nacimiento</label>
+			
+                                  <h:inputText class="text_input" id="fecha" value="#{personaController.selected.fechaNac}" size="10" />
+				</div>
+                         
+                         <div class="field-row">
+				  <label for="genero">Genero</label>
+			
+                                  <h:selectOneRadio id="Genero" value="#{personaController.selected.genero}" >
+                                            <selectItem itemLabel="F" itemValue="F" />
+                                                  <selectItem itemLabel="M" itemValue="M" />
+                                  </h:selectOneRadio>
+				</div>
+                         
+                         
+                        
+                         
+                         <div class="field-row">
+				  <label for="ciudad">Ciudad</label>
+                                  <h:selectOneMenu id="idCiudad" value="#{personaController.selected.idCiudad}">
+                                          <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"/>
+                                         
+                                  </h:selectOneMenu>
+                                      
+			
+                                
+				</div>
+                       
+
+			  <div class="field-row">
+
+				
+                            <h:commandButton action="#{personaController.createPersonaUsuario(usuarioController.id_user)}" value="Actualizar perfil"/>
+                           <h:commandButton action="perfil" value="Cancelar"/>
+                             
+              </div>
+                               
+                        </h:form>
 				
 				<!-- END .teacher-entry -->
 				</div>

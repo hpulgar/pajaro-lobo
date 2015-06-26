@@ -230,7 +230,84 @@ public class PersonaController implements Serializable {
     private void recreatePagination() {
         pagination = null;
     }
+    
+        public List<Persona> cargaDatos2(int id)
+     {
+         cargaPer.clear();
+         carga2.clear();
+         cargaPer = ejbFacade.findAll();//Cargo TODOS los DATOS de PERSONA TODOS DOVO
+         if(cargaPer != null && carga2 != null)
+         {
+            for(int i=0;i<cargaPer.size();i++)
+            {
+                if(cargaPer.get(i).getIdUsuario() == id)
+                {
+                    carga2.add(cargaPer.get(i));
+                }
+            }
+         }
+         return carga2;
+     }
+        
+         private boolean existePersona(int idus)
+    {
+        cargaPer.clear();
+        cargaPer = ejbFacade.findAll();//cargamos todas las personas en cargaPer
+        boolean r = false;
+        for(int i=0;i<cargaPer.size();i++)
+        {
+            if(cargaPer.get(i).getIdUsuario() == idus)
+            {
+                r = true;
+            }else
+            {
+                r = false;
+            }
+        }
+        return r;
+        
+    }
+        
 
+        
+         public String createPersonaUsuario(int idu) {
+        
+        
+        if(existePersona(idu)){
+            try {
+           
+                
+            current.setIdUsuario(idu);
+            getFacade().edit(current);
+            
+        
+        return "/cuenta.xhtml";
+            
+           // return prepareCreate();
+        } catch (Exception e) {
+               System.out.println("ERRORS "+e);
+            
+            return "/cuenta.xhtml";
+        }
+            
+        }
+        else{
+        try {
+           
+ 
+            current.setIdUsuario(idu);
+            getFacade().create(current);
+            
+            return "/cuenta.xhtml";
+        } catch (Exception e) {
+               System.out.println("ERRORS "+e);
+          
+            return "/cuenta.xhtml";
+        }
+    }
+        
+      
+    }
     public String next() {
         getPagination().nextPage();
         recreateModel();
