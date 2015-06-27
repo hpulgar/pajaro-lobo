@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
 
 
@@ -182,7 +183,7 @@
 					</div>
 					
                                     <h3>Editar informacion de la cuenta</h3><br></br>
-                                        
+                                       <h:messages errorStyle="color: yellow" class="msg notice"/>  
                    <br></br>  <h:form  id="contactform" class="clearfix">
 
 				<br></br><br></br><div class="field-row">
@@ -206,15 +207,15 @@
                          <div class="field-row">
 				  <label for="fecha">Fecha de nacimiento</label>
 			
-                                  <h:inputText class="text_input" id="fecha" value="#{personaController.selected.fechaNac}" size="10" />
+                           <p:calendar value="#{personaController.selected.fechaNac}"/>
 				</div>
                          
                          <div class="field-row">
 				  <label for="genero">Genero</label>
 			
                                   <h:selectOneRadio id="Genero" value="#{personaController.selected.genero}" >
-                                            <selectItem itemLabel="F" itemValue="F" />
-                                                  <selectItem itemLabel="M" itemValue="M" />
+                                            <f:selectItem itemLabel="F" itemValue="F" />
+                                                  <f:selectItem itemLabel="M" itemValue="M" />
                                   </h:selectOneRadio>
 				</div>
                          
@@ -237,7 +238,7 @@
 
 				
                             <h:commandButton action="#{personaController.createPersonaUsuario(usuarioController.id_user)}" value="Actualizar perfil"/>
-                           <h:commandButton action="perfil" value="Cancelar"/>
+                           <h:commandButton action="cuenta" value="Cancelar" />
                              
               </div>
                                

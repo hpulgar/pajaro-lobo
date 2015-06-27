@@ -184,29 +184,81 @@
                                         <h:outputText  value ="Los datos de su cuenta aun no están completos " rendered="#{personaController.datosVacios()}"/><br></br>
                  <h:link value="haga click" onclick="#{personaController.prepareEditPerfil(usuarioController.id_user)}" outcome="editar_cuenta.xhtml" rendered="#{personaController.datosVacios()}"/>
                        <h:outputText  value =" para completarlos" rendered="#{personaController.datosVacios()}"/>
-                       <h:dataTable style="width:100%;" >
-                            <c:forEach items="#{personaController.cargaDatos2(usuarioController.id_user)}" var="vv" rendered="#{personaController.datosVacios()}">
+                          <c:forEach items="#{personaController.cargaDatos2(usuarioController.id_user)}" var="vv" rendered="#{personaController.datosVacios()}">
+                               
+                             <!-- <h:outputText value="Nombre"/>
+                                <h:outputText value="#{vv.nombre}"/>
+                                
+                                <h:outputText value="Apellido"/>
+                                <h:outputText value="#{vv.apellido}"/>
+                                
+                                <h:outputText value="Fecha de nacimiento"/>
+                                <h:outputText value="#{vv.fechaNac}"/>
+                                
+                                <h:outputText value="Genero"/>
+                                <h:outputText value="#{vv.genero}"/>
+                                
+                                <h:outputText value="Ocupacion"/>
+                                <h:outputText value="#{vv.ocupacion}"/>
+                                
+                                
+                                <h:outputText value="Ciudad"/>
+                                <h:outputText value="#{vv.idCiudad.nombreCiudad}"/>
+                                
+                                     <h:outputText value="Pais"/>
+                                     <h:outputText value="#{vv.idCiudad.idPais.nombrePais}"/>
+                             -->
+                                     
+                                     <table style="width:100%;">
 				<thead>
 					<tr>
 						<th></th>
 						<th></th>
-						
+
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<td data-title="Column 1">Nombre</td>
-						<td>#{vv.nombre}</td>
-						
+						<td data-title="Column 1"><h:outputText value="#{vv.nombre}"/></td>
+				
 					</tr>
+					<tr>
+						<td data-title="Column 2">Apellido</td>
+						<td data-title="Column 2"><h:outputText value="#{vv.apellido}"/></td>
 					
+					</tr>
+					<tr>
+						<td data-title="Column 3">Fecha de nacimiento</td>
+						<td data-title="Column 3"><h:outputText value="#{vv.fechaNac}"/></td>
 					
+					</tr>
+					<tr>
+						<td data-title="Column 4">Genero</td>
+                                                <td data-title="Column 3"><h:outputText value="#{vv.genero}"/></td>
 					
+					</tr>
+                                    
+                                    <tr>
+						<td data-title="Column 4">Ciudad</td>
+                                                <td data-title="Column 3"><h:outputText value="#{vv.idCiudad.nombreCiudad}"/></td>
+					
+					</tr>
+                                    
+                                    
+                                     <tr>
+						<td data-title="Column 4">Ciudad</td>
+                                                <td data-title="Column 3"><h:outputText value="#{vv.idCiudad.idPais.nombrePais}"/></td>
+					
+					</tr>
 				</tbody>
-                            </c:forEach>
-                       </h:dataTable>
+			</table>
+                             <h:link class="button1" value="Editar informacion" onclick="#{personaController.prepareEditPerfil(usuarioController.id_user)}" outcome="editar_cuenta.xhtml"/>
+                        </c:forEach>
 				
 				<!-- END .teacher-entry -->
+                                
+                                
 				</div>
 				
                                  
@@ -231,10 +283,10 @@
 				<h3 class="block-title">Menu</h3>
 				
 				<ul>
-					<li><a href="#">Link1</a></li>
-					<li><a href="#">Link2</a></li>
-					<li><a href="#">Link3</a></li>
-					<li><a href="#">Link14</a></li>
+					<li><a href="#">Mi perfil</a></li>
+					<li><a href="#">Mis mensajes</a></li>
+					<li><a href="#">Notificaciones</a></li>
+				
 				</ul>
 				
 			<!-- END .content-block -->	

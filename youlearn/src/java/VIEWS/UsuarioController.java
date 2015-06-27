@@ -206,10 +206,10 @@ public class UsuarioController implements Serializable {
             current.setFechaCreacion(dateFormat.parse(fecha));
             current.setIdPerfil(retornaPerfilNormal());
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("UsuarioCreated"));
+          
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+     
             return null;
         }
     }
