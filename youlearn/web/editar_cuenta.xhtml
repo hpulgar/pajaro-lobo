@@ -54,10 +54,7 @@
 				
 				</ul>
 			
-				<ul class="top-right-nav clearfix">
-					<li class="phone-icon"></li>
-					<li class="email-icon"></li>
-				</ul>
+				
 			
 			<!-- END #header-top -->
 			</div>
@@ -80,13 +77,12 @@
 				<ul id="main-menu">
 					
 					<li class="current_page_item"><a href="index.xhtml">Home</a></li>
-                                        <h:form>
+                                          <h:form>
                                           
-                                            <li><h:commandLink  value="Perfil" rendered="#{menuController.logeado()}"></h:commandLink>
+                                            <li><h:commandLink  value="Perfil" action="perfil.xhtml" rendered="#{menuController.logeado()}"></h:commandLink>
                                                 <ul>
-                                                    <li><a href="courses-single.html">Informacion</a></li>
-							<li><a href="courses-single.html">Cursos</a></li>
-                                                        <li><a href="courses-single.html">Mensajes</a></li>
+                                                    <li><a href="cuenta.xhtml">Mi cuenta</a></li>
+                                                        <li><a href="#">Dashboard</a></li>
                                                 </ul>
                                             </li>
                                         </h:form>
@@ -94,9 +90,9 @@
                                         
 					<li><a href="courses.html">Cursos</a>
 						<ul>
-							<li><a href="#">Mis cursos</a></li>
+                                                    <li><h:commandLink  value="Mis cursos" rendered="#{menuController.logeado()}"></h:commandLink></li>
 							<li><a href="#">Buscar cursos</a></li>
-							<li><a href="#">Crear un curso</a></li>
+                                                        <li><h:commandLink  value="Crear un curso" rendered="#{menuController.logeado()}"></h:commandLink></li>
 
 						</ul>
 					</li>
@@ -122,8 +118,7 @@
 					</li>
                                          <li><a href="typography.html">Nosotros</a></li>
 					<li><a href="contact.html">Contacto</a></li>
-				
-				
+					
 				<!-- END #main-menu -->
 				</ul>
 		
@@ -188,19 +183,25 @@
 
 				<br></br><br></br><div class="field-row">
 				<br></br>	<br></br><label for="nombre">Nombre</label>
-                                        <h:inputText class="text_input" id="nombre" value="#{personaController.selected.nombre}" size="10" />
+                                        <p:inputText id="nombre" value="#{personaController.selected.nombre}" size="10" />
 				</div>
 
 				<div class="field-row">
 				  <label for="apellido">Apellido</label>
 			
-                                  <h:inputText class="text_input" id="apellido" value="#{personaController.selected.apellido}" size="10" />
+                                  <p:inputText id="apellido" value="#{personaController.selected.apellido}" size="10" />
+				</div>
+                                
+                                <div class="field-row">
+				  <label for="bio">Biografia</label>
+			
+                                  <p:inputTextarea rows="10" cols="50" queryDelay="750" minQueryLength="4" class="text_input" id="bio" value="#{personaController.selected.descripcion}" />
 				</div>
                          
                          <div class="field-row">
 				  <label for="ocupacion">Ocupacion</label>
 			
-                                  <h:inputText class="text_input" id="ocupacion" value="#{personaController.selected.ocupacion}" size="10" />
+                                  <p:inputText class="text_input" id="ocupacion" value="#{personaController.selected.ocupacion}" size="10" />
 				</div>
                          
                          
@@ -224,10 +225,10 @@
                          
                          <div class="field-row">
 				  <label for="ciudad">Ciudad</label>
-                                  <h:selectOneMenu id="idCiudad" value="#{personaController.selected.idCiudad}">
+                                  <p:selectOneMenu id="idCiudad" value="#{personaController.selected.idCiudad.idCiudad}">
                                           <f:selectItems value="#{ciudadController.itemsAvailableSelectOne}"/>
                                          
-                                  </h:selectOneMenu>
+                                  </p:selectOneMenu>
                                       
 			
                                 
@@ -266,13 +267,13 @@
 			<!-- BEGIN .content-block -->
 			<div class="content-block">
 				
-				<h3 class="block-title">Menu</h3>
+				<h3 class="block-title">Acceso rapido</h3>
 				
 				<ul>
-					<li><a href="#">Link1</a></li>
-					<li><a href="#">Link2</a></li>
-					<li><a href="#">Link3</a></li>
-					<li><a href="#">Link14</a></li>
+					<li><a href="perfil.xhtml">Mi perfil</a></li>
+					<li><a href="#">Mis mensajes</a></li>
+					<li><a href="#">Dashboard</a></li>
+				
 				</ul>
 				
 			<!-- END .content-block -->	
@@ -334,7 +335,7 @@
 			
 			<div id="footer-bottom" class="clearfix">
 				<p class="fl">  <a href="#">YouLearn</a></p>
-				<p class="go-up fr"><a href="#top" class="scrollup">Top</a></p>
+				<p class="go-up fr"><a href="#top" class="scrollup">V</a></p>
 			</div>
 		<!-- END #footer -->
 		</div>

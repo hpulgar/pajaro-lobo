@@ -37,6 +37,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Ciudad.findByIdCiudad", query = "SELECT c FROM Ciudad c WHERE c.idCiudad = :idCiudad"),
     @NamedQuery(name = "Ciudad.findByNombreCiudad", query = "SELECT c FROM Ciudad c WHERE c.nombreCiudad = :nombreCiudad")})
 public class Ciudad implements Serializable {
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCiudad")
+    private List<Persona> personaList;
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -48,8 +50,6 @@ public class Ciudad implements Serializable {
     @Size(min = 1, max = 45)
     @Column(name = "nombre_ciudad")
     private String nombreCiudad;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idCiudad")
-    private List<Persona> personaList;
     @JoinColumn(name = "id_pais", referencedColumnName = "id_pais")
     @ManyToOne(optional = false)
     private Pais idPais;
@@ -80,15 +80,6 @@ public class Ciudad implements Serializable {
 
     public void setNombreCiudad(String nombreCiudad) {
         this.nombreCiudad = nombreCiudad;
-    }
-
-    @XmlTransient
-    public List<Persona> getPersonaList() {
-        return personaList;
-    }
-
-    public void setPersonaList(List<Persona> personaList) {
-        this.personaList = personaList;
     }
 
     public Pais getIdPais() {
@@ -122,6 +113,15 @@ public class Ciudad implements Serializable {
     @Override
     public String toString() {
         return "ENTITIES.Ciudad[ idCiudad=" + idCiudad + " ]";
+    }
+
+    @XmlTransient
+    public List<Persona> getPersonaList() {
+        return personaList;
+    }
+
+    public void setPersonaList(List<Persona> personaList) {
+        this.personaList = personaList;
     }
     
 }

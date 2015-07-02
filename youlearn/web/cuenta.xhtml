@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
 
 
@@ -52,10 +53,6 @@
 				
 				</ul>
 			
-				<ul class="top-right-nav clearfix">
-					<li class="phone-icon"></li>
-					<li class="email-icon"></li>
-				</ul>
 			
 			<!-- END #header-top -->
 			</div>
@@ -80,11 +77,10 @@
 					<li class="current_page_item"><a href="index.xhtml">Home</a></li>
                                         <h:form>
                                           
-                                            <li><h:commandLink  value="Perfil" rendered="#{menuController.logeado()}"></h:commandLink>
+                                            <li><h:commandLink  value="Perfil" action="perfil.xhtml" rendered="#{menuController.logeado()}"></h:commandLink>
                                                 <ul>
-                                                    <li><a href="courses-single.html">Informacion</a></li>
-							<li><a href="courses-single.html">Cursos</a></li>
-                                                        <li><a href="courses-single.html">Mensajes</a></li>
+                                                    <li><a href="cuenta.xhtml">Mi cuenta</a></li>
+                                                        <li><a href="#">Dashboard</a></li>
                                                 </ul>
                                             </li>
                                         </h:form>
@@ -159,6 +155,8 @@
 		
 	<!-- END .page-header -->
 	</div>
+        
+        
 	
 	<!-- BEGIN .content-wrapper -->
 	<div class="content-wrapper page-content-wrapper clearfix">
@@ -280,12 +278,12 @@
 			<!-- BEGIN .content-block -->
 			<div class="content-block">
 				
-				<h3 class="block-title">Menu</h3>
+				<h3 class="block-title">Acceso rapido</h3>
 				
 				<ul>
-					<li><a href="#">Mi perfil</a></li>
+					<li><a href="perfil.xhtml">Mi perfil</a></li>
 					<li><a href="#">Mis mensajes</a></li>
-					<li><a href="#">Notificaciones</a></li>
+					<li><a href="#">Dashboard</a></li>
 				
 				</ul>
 				

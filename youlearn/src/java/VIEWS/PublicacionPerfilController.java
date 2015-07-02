@@ -1,11 +1,17 @@
 package VIEWS;
 
 import ENTITIES.PublicacionPerfil;
+import ENTITIES.Usuario;
 import VIEWS.util.JsfUtil;
 import VIEWS.util.PaginationHelper;
 import MODEL.PublicacionPerfilFacade;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -28,6 +34,25 @@ public class PublicacionPerfilController implements Serializable {
     private MODEL.PublicacionPerfilFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+        
+    private List<PublicacionPerfil> pp1 = new ArrayList();
+
+    public List<PublicacionPerfil> getPp1() {
+        return pp1;
+    }
+
+    public void setPp1(List<PublicacionPerfil> pp1) {
+        this.pp1 = pp1;
+    }
+
+    public List<PublicacionPerfil> getPp2() {
+        return pp2;
+    }
+
+    public void setPp2(List<PublicacionPerfil> pp2) {
+        this.pp2 = pp2;
+    }
+    private List<PublicacionPerfil> pp2 = new ArrayList();
 
     public PublicacionPerfilController() {
     }
@@ -179,6 +204,54 @@ public class PublicacionPerfilController implements Serializable {
         recreateModel();
         return "List";
     }
+    
+     public String crearPublicacion(int idmuro,int idpublicador)//id muro = id usuario poseedor el muro
+    {
+        try
+        {
+            DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            Date date = new Date();            
+            String fecha = dateFormat.format(date);
+            
+            Usuario ou = new Usuario();
+            Usuario ou2 = new Usuario();
+            ou.setIdUsuario(idmuro);
+            ou2.setIdUsuario(idpublicador);
+                      
+            
+          
+            if(ou.getIdUsuario()==0)
+            {
+              current.setIdUsuario(ou2);
+            current.setIdPublicador(ou2);
+            
+                
+            }
+            else{
+                
+              current.setIdUsuario(ou);
+            current.setIdPublicador(ou2);
+            
+                
+            }
+            
+            
+            
+           current.setFechaPublicacion(dateFormat.parse(fecha));
+           getFacade().create(current); 
+           current = null;
+           
+           return "/perfil.xhtml";
+        }catch(Exception e)
+        {
+            System.out.println("ID DEL USUARIO :"+ current.getIdUsuario());
+   
+              System.out.println("ID DEL PUBLICADOR :"+ current.getIdPublicador());
+            System.out.println("Error Al crear "+e);
+            return "/perfil.xhtml";
+        }
+        
+    }
 
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
@@ -190,6 +263,26 @@ public class PublicacionPerfilController implements Serializable {
 
     public PublicacionPerfil getPublicacionPerfil(java.lang.Integer id) {
         return ejbFacade.find(id);
+    }
+    
+    public List<PublicacionPerfil> cargaPublicaciones(int idowner)
+    {
+        pp1.clear();
+        pp2.clear();
+        pp1 = ejbFacade.findAll();
+        
+        
+        for(int i = 0;i<pp1.size();i++)
+        {
+            if(pp1.get(i).getIdUsuario().getIdUsuario() == idowner)
+            {
+               
+                    pp2.add(pp1.get(i));
+                
+            }
+        }
+        return pp2;
+        
     }
 
     @FacesConverter(forClass = PublicacionPerfil.class)

@@ -88,26 +88,29 @@
 				<!-- BEGIN #main-menu -->
 				<ul id="main-menu">
 					
-					<li><a href="index-2.html">Home</a></li>
-					<li><a href="typography.html">About Us</a></li>
-					<li><a href="courses.html">Courses</a>
+					<li class="current_page_item"><a href="index.xhtml">Home</a></li>
+                                        <h:form>
+                                          
+                                            <li><h:commandLink  value="Perfil" rendered="#{menuController.logeado()}"></h:commandLink>
+                                                <ul>
+                                                    <li><a href="cuenta.xhtml">Informacion</a></li>
+							<li><a href="#">Dashboard</a></li> 
+                                                        
+                                                </ul>
+                                            </li>
+                                        </h:form>
+                                       
+                                        
+					<li><a href="courses.html">Cursos</a>
 						<ul>
-							<li><a href="courses-single.html">Course Name #1</a></li>
-							<li><a href="courses-single.html">Course Name #2</a></li>
-							<li><a href="courses-single.html">Course Name #3</a>
-								<ul>
-									<li><a href="courses-single.html">Course Name #1</a></li>
-									<li><a href="courses-single.html">Course Name #2</a></li>
-									<li><a href="courses-single.html">Course Name #3</a></li>
-								</ul>
-							</li>
-							<li><a href="courses-single.html">Course Name #4</a></li>
-							<li><a href="courses-single.html">Course Name #5</a></li>
-							<li><a href="courses-single.html">Course Name #6</a></li>
+                                                    <li><h:commandLink  value="Mis cursos" rendered="#{menuController.logeado()}"></h:commandLink></li>
+							<li><a href="#">Buscar cursos</a></li>
+                                                        <li><h:commandLink  value="Crear un curso" rendered="#{menuController.logeado()}"></h:commandLink></li>
+
 						</ul>
 					</li>
-					<li><a href="blog.html">Blog</a></li>
-					<li><a href="typography.html">Features</a>
+			
+					<li><a href="typography.html">Caracteristicas</a>
 						<ul>
 							<li><a href="events.html">Events</a></li>
 							<li><a href="events-single.html">Events Single</a></li>
@@ -126,7 +129,8 @@
 							<li><a href="typography.html">Typography</a></li>
 						</ul>
 					</li>
-					<li class="current_page_item"><a href="contact.html">Contact Us</a></li>
+                                         <li><a href="typography.html">Nosotros</a></li>
+					<li><a href="contact.html">Contacto</a></li>
 					
 				<!-- END #main-menu -->
 				</ul>

@@ -185,7 +185,7 @@ public class CiudadController implements Serializable {
     }
 
     public SelectItem[] getItemsAvailableSelectOne() {
-        return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
+        return JsfUtil.getSelectItemsCiudad(ejbFacade.findAll(), true);
     }
 
     public Ciudad getCiudad(java.lang.Integer id) {

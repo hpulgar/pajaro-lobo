@@ -58,10 +58,7 @@
 				
 				</ul>
 			
-				<ul class="top-right-nav clearfix">
-					<li class="phone-icon"></li>
-					<li class="email-icon"></li>
-				</ul>
+				
 			
 			<!-- END #header-top -->
 			</div>
@@ -86,11 +83,11 @@
 					<li class="current_page_item"><a href="index.xhtml">Home</a></li>
                                         <h:form>
                                           
-                                            <li><h:commandLink  value="Perfil" rendered="#{menuController.logeado()}"></h:commandLink>
+                                            <li><h:commandLink  value="Perfil"  action="perfil.xhtml" rendered="#{menuController.logeado()}"></h:commandLink>
                                                 <ul>
-                                                    <li><a href="cuenta.xhtml">Informacion</a></li>
-							<li><a href="courses-single.html">Cursos</a></li>
-                                                        <li><a href="courses-single.html">Mensajes</a></li>
+                                                    <li><a href="cuenta.xhtml">Mi cuenta</a></li>
+							<li><a href="#">Dashboard</a></li> 
+                                                        
                                                 </ul>
                                             </li>
                                         </h:form>

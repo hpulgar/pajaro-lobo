@@ -5,6 +5,7 @@
  */
 package ENTITIES;
 
+
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -108,7 +109,7 @@ public class Pais implements Serializable {
 
     @Override
     public String toString() {
-        return "ENTITIES.Pais[ idPais=" + idPais + " ]";
+        return "ent.Pais[ idPais=" + idPais + " ]";
     }
     
 }

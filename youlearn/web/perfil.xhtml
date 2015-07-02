@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
 
 
@@ -54,10 +55,7 @@
 				
 				</ul>
 			
-				<ul class="top-right-nav clearfix">
-					<li class="phone-icon"></li>
-					<li class="email-icon"></li>
-				</ul>
+				
 			
 			<!-- END #header-top -->
 			</div>
@@ -82,11 +80,11 @@
 					<li class="current_page_item"><a href="index.xhtml">Home</a></li>
                                         <h:form>
                                           
-                                            <li><h:commandLink  value="Perfil" rendered="#{menuController.logeado()}"></h:commandLink>
+                                            <li><h:commandLink  value="Perfil" action="perfil.xhtml" rendered="#{menuController.logeado()}"></h:commandLink>
                                                 <ul>
-                                                    <li><a href="courses-single.html">Informacion</a></li>
-							<li><a href="courses-single.html">Cursos</a></li>
-                                                        <li><a href="courses-single.html">Mensajes</a></li>
+                                                    <li><a href="cuenta.xhtml">Mi cuenta</a></li>
+							<li><a href="#">Dashboard</a></li> 
+                                                        
                                                 </ul>
                                             </li>
                                         </h:form>
@@ -94,9 +92,9 @@
                                         
 					<li><a href="courses.html">Cursos</a>
 						<ul>
-							<li><a href="#">Mis cursos</a></li>
+                                                    <li><h:commandLink  value="Mis cursos" rendered="#{menuController.logeado()}"></h:commandLink></li>
 							<li><a href="#">Buscar cursos</a></li>
-							<li><a href="#">Crear un curso</a></li>
+                                                        <li><h:commandLink  value="Crear un curso" rendered="#{menuController.logeado()}"></h:commandLink></li>
 
 						</ul>
 					</li>
@@ -122,8 +120,7 @@
 					</li>
                                          <li><a href="typography.html">Nosotros</a></li>
 					<li><a href="contact.html">Contacto</a></li>
-				
-				
+					
 				<!-- END #main-menu -->
 				</ul>
 		
@@ -175,6 +172,7 @@
 				
 				
 				<!-- BEGIN .teacher-entry -->
+                                 <c:forEach items="#{personaController.cargaDatos2(usuarioController.id_user)}" var="vv" rendered="#{personaController.datosVacios()}">
 				<div class="teacher-entry clearfix">
 					
 					<div class="teacher-image">
@@ -185,23 +183,12 @@
 					<div class="teacher-content">	
 						
 						<div class="title1 clearfix">
-							<h4>Nombre_Usuario</h4>
+                                                    <h4>#{vv.nombre} #{vv.apellido}</h4>
 							<div class="title-block"></div>
 						</div>
                                             
-                                            <div class="title1 clearfix">
-							<h4>Edad</h4>
-							<div class="title-block"></div>
-						</div>
-                                            
-                                           <div class="title1 clearfix">
-							<h4>Tipo_Usuario</h4>
-							<div class="title-block"></div>
-						</div>
-                                            
-                                            
-						
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquam placerat tortor at suscipit. Nunc iaculis libero a quam consequat molestie. Cras volutpat ornare lectus, ut pulvinar.</p>
+                                            <p>#{vv.descripcion}</p>
+                                   
 						
 						<ul class="teacher-contact">
 	
@@ -212,11 +199,12 @@
 				
 				<!-- END .teacher-entry -->
 				</div>
+                                  </c:forEach>
 				
                                   <div id="respond">
 						
-						<h3 class="block-title">3 Comments</h3>
-						
+						<h3 class="block-title">Muro</h3>
+						 <c:forEach items="#{publicacionPerfilController.cargaPublicaciones(usuarioController.id_user)}" var="pp"  rendered="false"> 
 						<ul class="comments">
 
 							<li class="comment-entry clearfix">
@@ -230,8 +218,8 @@
 								<!-- BEGIN .comment-right -->
 								<div class="comment-right">
 
-									<p class="comment-info">Admin <span>Aug 6, 2012 at 9:37 am </span></p>
-									<p class="comment-text">Duis ut mauris ut lacus tincidunt viverra. Morbi ornare tellus vitae velit molestie ullamcorper. Mauris sodales congue est, nec tristique nulla vulputate eu. Aliquam at nulla ut diam scelerisque dictum eu sit amet lectus. </p>
+                                                                    <p class="comment-info">#{pp.idUsuario.username} <span>#{pp.fechaPublicacion} </span></p>
+                                                                    <p class="comment-text">#{pp.publicacion}</p>
 									<p class="reply"><a href="#">Reply</a></p>
 
 								<!-- END .comment-right -->
@@ -240,42 +228,25 @@
 
 							</li>
 
-							<li class="comment-entry clearfix">
-
-								<!-- BEGIN .comment-left -->
-								<div class="comment-left">
-									<div class="comment-image"></div>
-								<!-- END .comment-left -->
-								</div>
-
-								<!-- BEGIN .comment-right -->
-								<div class="comment-right">
-
-									<p class="comment-info">Admin <span>Aug 6, 2012 at 9:37 am </span></p>
-									<p class="comment-text">Duis ut mauris ut lacus tincidunt viverra. Morbi ornare tellus vitae velit molestie ullamcorper. Mauris sodales congue est, nec tristique nulla vulputate eu. Aliquam at nulla ut diam scelerisque dictum eu sit amet lectus. </p>
-									<p class="reply"><a href="#">¿Responder?</a></p>
-
-								<!-- END .comment-right -->
-								</div>
-
-							</li>
+							
 
 						</ul>
+                                                 </c:forEach>
 						
 						<h3 class="block-title">Dejar un mensaje</h3>
 						
-						<form action="#" id="commentform" method="post">
+						<h:form>
 
 						
 
 							<div class="field-row">
-								<label for="message_text">Comment</label>
-								<textarea name="message" id="message_text" class="text_input" cols="60" rows="9"></textarea>
+								<label for="message_text">Escribe algo...</label>
+                                                                  <p:inputTextarea value="#{publicacionPerfilController.selected.publicacion}" rows="5" cols="30" autoResize="false" />
 							</div>
 
-							<input class="button1" type="submit" value="Enviar" id="submit" name="submit"/>
+                                                    <h:commandButton class="button1" value="Dejar un mensaje!" action="#{publicacionPerfilController.crearPublicacion(usuarioController.id_muro,usuarioController.id_user)}"/>
 
-						</form>
+						</h:form>
 						
 					<!-- END #respond -->
 					</div>
@@ -297,13 +268,13 @@
 			<!-- BEGIN .content-block -->
 			<div class="content-block">
 				
-				<h3 class="block-title">Menu</h3>
+				<h3 class="block-title">Acceso rapido</h3>
 				
 				<ul>
-					<li><a href="#">Link1</a></li>
-					<li><a href="#">Link2</a></li>
-					<li><a href="#">Link3</a></li>
-					<li><a href="#">Link14</a></li>
+					<li><a href="cuenta.xhtml">Mi cuenta</a></li>
+					<li><a href="#">Mis mensajes</a></li>
+					<li><a href="#">Dashboard</a></li>
+				
 				</ul>
 				
 			<!-- END .content-block -->	
