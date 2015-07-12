@@ -24,6 +24,7 @@ public class ForoPosteosFacade extends AbstractFacade<ForoPosteos> {
         return em;
     }
 
+    
     public ForoPosteosFacade() {
         super(ForoPosteos.class);
     }

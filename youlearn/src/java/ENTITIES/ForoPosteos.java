@@ -40,6 +40,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "ForoPosteos.findAll", query = "SELECT f FROM ForoPosteos f"),
     @NamedQuery(name = "ForoPosteos.findByIdPost", query = "SELECT f FROM ForoPosteos f WHERE f.idPost = :idPost"),
     @NamedQuery(name = "ForoPosteos.findByFecha", query = "SELECT f FROM ForoPosteos f WHERE f.fecha = :fecha"),
+    @NamedQuery(name = "ForoPosteos.findByIdCat", query = "SELECT f FROM ForoPosteos f,ForoCategoria a WHERE a.idCategoria = :id_categoria "),
     @NamedQuery(name = "ForoPosteos.findByAutorizado", query = "SELECT f FROM ForoPosteos f WHERE f.autorizado = :autorizado")})
 public class ForoPosteos implements Serializable {
     private static final long serialVersionUID = 1L;

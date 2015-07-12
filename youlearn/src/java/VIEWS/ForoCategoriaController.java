@@ -1,11 +1,14 @@
 package VIEWS;
 
 import ENTITIES.ForoCategoria;
+import ENTITIES.ForoPosteos;
 import VIEWS.util.JsfUtil;
 import VIEWS.util.PaginationHelper;
 import MODEL.ForoCategoriaFacade;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -28,6 +31,24 @@ public class ForoCategoriaController implements Serializable {
     private MODEL.ForoCategoriaFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
+       private List<ForoCategoria> carga2 = new ArrayList();
+
+    public List<ForoCategoria> getCarga2() {
+        return carga2;
+    }
+
+    public void setCarga2(List<ForoCategoria> carga2) {
+        this.carga2 = carga2;
+    }
+
+    public List<ForoCategoria> getCarga() {
+        return carga;
+    }
+
+    public void setCarga(List<ForoCategoria> carga) {
+        this.carga = carga;
+    }
+          private List<ForoCategoria> carga = new ArrayList();
 
     public ForoCategoriaController() {
     }
@@ -190,6 +211,38 @@ public class ForoCategoriaController implements Serializable {
 
     public ForoCategoria getForoCategoria(java.lang.Integer id) {
         return ejbFacade.find(id);
+    }
+    
+     public List<ForoCategoria> cargaPostNoticiasCategoria(int idsc)
+    {
+        if(idsc == 0)
+        {
+            carga.clear();
+            return carga = ejbFacade.findAll();
+        }else
+        {
+            carga.clear();
+            carga2.clear();
+            carga = ejbFacade.findAll();
+            idsc=9;
+               
+
+            for(int i=0;i<carga.size();i++)
+            {
+           
+                if(carga.get(i).getIdCategoria()== 5)
+                {
+                    
+                    
+                    carga2.add(carga.get(i));
+                }
+                else
+                {
+                    
+                }
+            }
+            return carga2;
+        }
     }
 
     @FacesConverter(forClass = ForoCategoria.class)

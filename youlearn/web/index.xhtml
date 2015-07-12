@@ -101,7 +101,7 @@
 
 						</ul>
 					</li>
-			
+                                        <li><h:commandLink  value="Foro"  action="foro.xhtml" rendered="#{menuController.logeado()}"></h:commandLink></li>
 					<li><a href="typography.html">Caracteristicas</a>
 						<ul>
 							<li><a href="events.html">Events</a></li>
@@ -162,7 +162,7 @@
 				
 				<div class="flex-caption-wrapper">
 					<div class="flex-caption">
-						<p>Novedodos cursos</p>
+						<p>Novedosos cursos</p>
 						<div class="clearboth"></div>
 						<p>Aprende hoy!</p>
 					</div>
@@ -278,18 +278,17 @@
 							<!-- BEGIN .news-items -->
 							<ul class="news-items">
 							
-                                                            <c:forEach items="#{foroPosteosController.cargaPostsNoticias(idsc)}" var="f" rendered="false">
-                                            <span class="level">#{f.idSubcategoria.titulo}</span>
-                                
+                                                            <c:forEach items="#{foroPosteosController.cargaPosts(idsc)}" var="f" rendered="false">
+
                                      <li class="clearfix">
                                                                    
 									<div class="news-image">
 										<a href="blog-single.html"><img src="images/01_demo_image.jpg" alt="" /></a>
 									</div>
 									<div class="news-content">
-										<h4><a href="blog-single.html">#{f.idSubcategoria.titulo}</a></h4>
-                                                                                <p class="news-date">#{f.idSubcategoria.subcateFecha}</p>
-                                                                                <p class="news-excerpt">#{f.idSubcategoria.descripcion}</p>
+                                                                            <h4><a href="blog-single.html">#{f.titulo}</a></h4>
+                                                                            <p class="news-date">#{f.contenido}</p>
+                                                                            <p class="news-excerpt">Escrito por #{f.idUser.idPerfil.nomPerfil} el #{(f.fecha)}</p> 
 									</div>
 								</li>
                                 

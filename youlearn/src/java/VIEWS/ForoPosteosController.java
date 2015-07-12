@@ -1,5 +1,6 @@
 package VIEWS;
 
+import ENTITIES.ForoCategoria;
 import ENTITIES.ForoPosteos;
 import VIEWS.util.JsfUtil;
 import VIEWS.util.PaginationHelper;
@@ -32,6 +33,8 @@ public class ForoPosteosController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private List<ForoPosteos> carga = new ArrayList();
+
+
 
     public ForoPosteos getCurrent() {
         return current;
@@ -254,10 +257,12 @@ public class ForoPosteosController implements Serializable {
         {
             carga.clear();
             carga2.clear();
+
             carga = ejbFacade.findAll();
+        
             for(int i=0;i<carga.size();i++)
             {
-                if(carga.get(i).getIdSubcategoria().getIdSubcategoria() == idsc)
+                if(carga.get(i).getIdPost() == idsc)
                 {
                     carga2.add(carga.get(i));
                 }
@@ -266,30 +271,7 @@ public class ForoPosteosController implements Serializable {
         }
     }
          
-         //experimental,no testeado
-         public List<ForoPosteos> cargaPostsNoticias(int idsc)
-    {
-        if(idsc == 0)
-        {
-            carga.clear();
-            return carga = ejbFacade.findAll();
-        }else
-        {
-            carga.clear();
-            carga2.clear();
-            carga = ejbFacade.findAll();
-            for(int i=0;i<carga.size();i++)
-            {
-                if(carga.get(i).getIdSubcategoria().getIdSubcategoria() == idsc)
-                {
-                    
-                    System.out.println("Valor"+ carga.get(i).getIdSubcategoria().getIdSubcategoria());
-                    carga2.add(carga.get(i));
-                }
-            }
-            return carga2;
-        }
-    }
+         
 
     public SelectItem[] getItemsAvailableSelectMany() {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), false);
