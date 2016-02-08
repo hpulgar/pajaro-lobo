@@ -33,8 +33,27 @@ public class ForoPosteosController implements Serializable {
     private PaginationHelper pagination;
     private int selectedItemIndex;
     private List<ForoPosteos> carga = new ArrayList();
+    private List<ForoPosteos> cargaNoticias = new ArrayList();
+    private int idPosteo;
+    private List<ForoPosteos> carga2 = new ArrayList();
+    private String tit;
 
+    
+    
+    
+    public int getIdPosteo() {
+        System.out.println(idPosteo);
+        return idPosteo;
+        
+    }
 
+    public void setIdPosteo(int idPosteo) {
+        this.idPosteo = idPosteo;
+    }
+ 
+    public void setCargaNoticias(List<ForoPosteos> cargaNoticias) {
+        this.cargaNoticias = cargaNoticias;
+    }
 
     public ForoPosteos getCurrent() {
         return current;
@@ -84,16 +103,17 @@ public class ForoPosteosController implements Serializable {
         this.tit = tit;
     }
 
-    public int getIdPost() {
-        return idPost;
-    }
+    //public int getIdPost() {
+    //    return idPost;
+    //}
 
-    public void setIdPost(int idPost) {
-        this.idPost = idPost;
-    }
-    private List<ForoPosteos> carga2 = new ArrayList();
-    private String tit;
-    private int idPost;
+    //public void setIdPost(int idPost) {
+    //    this.idPost = idPost;
+    //}
+    
+    
+    
+    //private int idPost;
 
     public ForoPosteosController() {
     }
@@ -246,30 +266,54 @@ public class ForoPosteosController implements Serializable {
         return "List";
     }
     
+    /////creada de antes
     
-         public List<ForoPosteos> cargaPosts(int idsc)
+    public List<ForoPosteos> cargaUno(int id)
     {
-        if(idsc == 0)
-        {
-            carga.clear();
-            return carga = ejbFacade.findAll();
-        }else
-        {
-            carga.clear();
-            carga2.clear();
-
-            carga = ejbFacade.findAll();
+        System.out.println(id);
+        carga.clear();
+        carga = ejbFacade.verP(id);
+        return carga;
         
-            for(int i=0;i<carga.size();i++)
-            {
-                if(carga.get(i).getIdPost() == idsc)
-                {
-                    carga2.add(carga.get(i));
-                }
-            }
-            return carga2;
-        }
     }
+         
+//    public List<ForoPosteos> cargaPosts(int idsc)
+//    {
+//        
+//            carga.clear();
+//            carga2.clear();
+//
+//            carga = ejbFacade.findAll();
+//        
+//            for(int i=0;i<carga.size();i++)
+//            {
+//                if(carga.get(i).getIdPost()==idsc)
+//                {
+//                    carga2.add(carga.get(i));
+//                }
+//            }
+//            return carga2;
+//        
+//    }
+         
+         public List<ForoPosteos> cargaTodos()
+         {
+             carga2.clear();
+             carga2=ejbFacade.findAll();
+             
+             return carga2;
+        
+         }
+         
+         public String verPost(int id)//metodo para cambiar de pagina USAR CON ¡¡¡¡COMMANDLINK!!!!
+         {
+             setIdPosteo(id);
+             return "/blog-single.xhtml";
+         }
+         
+        
+         
+           
          
          
 

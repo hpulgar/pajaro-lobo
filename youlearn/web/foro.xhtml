@@ -179,16 +179,26 @@
 						</tr>
 					</thead>
 					<tbody>
-                                             <c:forEach items="#{foroController.cargaPosts(idsc)}" var="f" rendered="false">
+                                            <c:forEach items="#{foroPosteosController.cargaTodos()}" var="f" rendered="false">
                                 
-                                       
+                                                <h:form>
 						<tr>
-                                                    <td data-title="fecha">#{f.idSubcategoria.subcateFecha}</td>
-                                                    <td data-title="Name"><a href="#">#{f.idSubcategoria.idCategoria}</a></td>
-							<td data-title="iniciado_por">Admin</td>
-							<td data-title="Mensajes">2</td>
-                                                        <td data-title="Visitas"></td>
+                                                    
+                                                    
+                                                      
+                                                   
+                                                    <td data-title="fecha">#{f.fecha}</td>
+                                                    
+                                                    
+                                                    <td data-title="" > <h:commandLink action="#{foroPosteosController.verPost(f.idPost)}" value="#{f.titulo}"/></td>                                       
+                                                    
+                                                    
+                                                    <td data-title="iniciado_por">#{f.idUser.username}</td>
+							<td data-title="Mensajes">#{f.idPost}</td>
+                                                        <td data-title="Visitas">#{foroPosteosController.setIdPosteo(f.idPost)}</td>
+                                                        
 						</tr>
+                                                    </h:form>
                                              </c:forEach>
 						
 					</tbody>
